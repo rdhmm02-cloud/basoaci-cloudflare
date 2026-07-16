@@ -1,11 +1,13 @@
 import {
   tgSendMessage,
+  tgSendDocument,
   tgAnswerCallback,
   tgEditMessageText,
   formatOrderForTelegram,
   orderKeyboard,
   rupiah,
 } from "./helpers.js";
+import { generateLaporanPdf } from "./pdf.js";
 
 function isFromAdmin(env, chatId) {
   return String(chatId) === String(env.TELEGRAM_CHAT_ID);
@@ -104,6 +106,7 @@ const HELP_TEXT = [
   "/harga <id> <harga> — update harga menu",
   "/pesanan — lihat pesanan yang belum selesai",
   "/cari <no.pesanan> — cari 1 pesanan spesifik",
+  "/laporan — laporan pesanan 30 hari terakhir (+ PDF)",
   "/help — tampilkan bantuan ini",
 ].join("\n");
 
@@ -146,6 +149,44 @@ async function cmdPesanan(env) {
   return results.map((o) => formatOrderForTelegram(o)).join("\n\n—————\n\n");
 }
 
+async function cmdLaporan(env) {
+  const { results } = await env.DB.prepare(
+    "SELECT * FROM orders WHERE created_at >= datetime('now', '-30 days') AND status != 'Dibatalkan' ORDER BY created_at DESC"
+  ).all();
+
+  const { results: allResults } = await env.DB.prepare(
+    "SELECT * FROM orders WHERE created_at >= datetime('now', '-30 days') ORDER BY created_at DESC"
+  ).all();
+
+  if (allResults.length === 0) return "Belum ada pesanan dalam 30 hari terakhir.";
+
+  const totalOrders = results.length;
+  const totalOmzet = results.reduce((sum, o) => sum + (o.total || 0), 0);
+  const byStatus = {};
+  for (const o of results) {
+    byStatus[o.status] = (byStatus[o.status] || 0) + 1;
+  }
+  const statusLines = Object.entries(byStatus)
+    .map(([status, count]) => `  ${status}: ${count}`)
+    .join("\n");
+
+  const summary = [
+    "*LAPORAN 30 HARI TERAKHIR*",
+    "",
+    `Total Pesanan: *${totalOrders}*`,
+    `Total Omzet: *${rupiah(totalOmzet)}*`,
+    "",
+    "Rincian status:",
+    statusLines,
+  ].join("\n");
+
+  const detailLines = results.map(
+    (o) => `\`${o.id}\` — ${o.buyer_name || "-"} — ${rupiah(o.total)} — ${o.status}`
+  );
+
+  return { summary, detailLines, allOrders: allResults };
+}
+
 async function cmdCari(env, args) {
   const [id] = args;
   if (!id) return "Format: /cari <no.pesanan>";
@@ -186,6 +227,35 @@ async function handleTextMessage(env, ctx, msg) {
       const o = await env.DB.prepare("SELECT * FROM orders WHERE id = ?").bind((args[0] || "").toUpperCase()).first();
       if (!o) reply = `Pesanan \`${args[0] || ""}\` tidak ditemukan.`;
       else { reply = formatOrderForTelegram(o); extra = { reply_markup: orderKeyboard(o) }; }
+      break;
+    }
+    case "/laporan": {
+      const report = await cmdLaporan(env);
+      if (typeof report === "string") {
+        reply = report;
+        break;
+      }
+      await tgSendMessage(env, report.summary);
+      const chunks = [];
+      let current = "*DAFTAR PESANAN:*\n\n";
+      for (const line of report.detailLines) {
+        if ((current + line + "\n").length > 3500) {
+          chunks.push(current);
+          current = "";
+        }
+        current += line + "\n";
+      }
+      if (current) chunks.push(current);
+      for (const chunk of chunks) {
+        await tgSendMessage(env, chunk);
+      }
+
+      const now = new Date();
+      const periodLabel = now.toLocaleDateString("id-ID", { month: "long", year: "numeric" });
+      const pdfBytes = await generateLaporanPdf(report.allOrders, periodLabel);
+      const filename = `laporan-${now.toISOString().slice(0, 7)}.pdf`;
+      await tgSendDocument(env, pdfBytes, filename, `Laporan lengkap ${periodLabel} (semua status)`);
+      reply = undefined;
       break;
     }
     default:

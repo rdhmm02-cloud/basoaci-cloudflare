@@ -83,6 +83,22 @@ export async function tgSendMessage(env, text, extra = {}) {
   });
 }
 
+export async function tgSendDocument(env, fileBytes, filename, caption) {
+  if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) return;
+  const url = `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendDocument`;
+  const formData = new FormData();
+  formData.append("chat_id", env.TELEGRAM_CHAT_ID);
+  formData.append("document", new Blob([fileBytes], { type: "application/pdf" }), filename);
+  if (caption) formData.append("caption", caption);
+
+  const res = await fetch(url, { method: "POST", body: formData });
+  if (!res.ok) {
+    const errText = await res.text();
+    console.error("sendDocument failed:", errText);
+  }
+  return res;
+}
+
 export async function tgAnswerCallback(env, callbackQueryId, text) {
   return tgCall(env, "answerCallbackQuery", {
     callback_query_id: callbackQueryId,

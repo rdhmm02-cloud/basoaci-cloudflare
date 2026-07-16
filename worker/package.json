@@ -8,6 +8,9 @@
     "migrate:local": "wrangler d1 migrations apply basoaci-db --local",
     "migrate:remote": "wrangler d1 migrations apply basoaci-db --remote"
   },
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
+  },
   "devDependencies": {
     "wrangler": "^3.90.0"
   }
