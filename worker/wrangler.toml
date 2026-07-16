@@ -1,4 +1,4 @@
-name = "basoaci-api"
+database_id = "43e29869-b286-489b-aa31-dfe6b21b67e9"0name = "basoaci-api"
 main = "src/index.js"
 compatibility_date = "2024-11-01"
 
