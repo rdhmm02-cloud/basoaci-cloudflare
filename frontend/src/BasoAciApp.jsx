@@ -776,7 +776,7 @@ function OrderView({
   paymentMethod, setPaymentMethod, shopInfo,
   submitOrder, lastOrderId,
   pendingOrder, confirmOrderSent, cancelPendingOrder,
-  buyerPhone, storeOpen, openHour, closeHour,
+  storeOpen, openHour, closeHour,
 }) {
   const [showHistory, setShowHistory] = useState(false);
   const [buyerOrderHistory, setBuyerOrderHistory] = useState([]);
