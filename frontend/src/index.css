@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #1c1512;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "font-display-fallback";
+  src: local("Georgia");
+}
+
+.font-display {
+  font-family: Georgia, "Times New Roman", serif;
+}
