@@ -102,10 +102,10 @@ const HELP_TEXT = [
   "*Perintah yang tersedia:*",
   "",
   "/menu — lihat daftar menu & stok",
-  "/stok <id> <jumlah> — update stok menu",
-  "/harga <id> <harga> — update harga menu",
+  "/stok [id] [jumlah] — update stok menu",
+  "/harga [id] [harga] — update harga menu",
   "/pesanan — lihat pesanan yang belum selesai",
-  "/cari <no.pesanan> — cari 1 pesanan spesifik",
+  "/cari [no.pesanan] — cari 1 pesanan spesifik",
   "/laporan — laporan pesanan 30 hari terakhir (+ PDF)",
   "/help — tampilkan bantuan ini",
 ].join("\n");
@@ -121,7 +121,7 @@ async function cmdMenu(env) {
 
 async function cmdStok(env, args) {
   const [id, qtyStr] = args;
-  if (!id || qtyStr === undefined) return "Format: /stok <id_menu> <jumlah>\nContoh: /stok jando 30";
+  if (!id || qtyStr === undefined) return "Format: /stok [id_menu] [jumlah]\nContoh: /stok jando 30";
   const qty = Number(qtyStr);
   if (Number.isNaN(qty) || qty < 0) return "Jumlah stok tidak valid.";
   const m = await env.DB.prepare("SELECT * FROM menu WHERE id = ?").bind(id).first();
@@ -132,7 +132,7 @@ async function cmdStok(env, args) {
 
 async function cmdHarga(env, args) {
   const [id, priceStr] = args;
-  if (!id || priceStr === undefined) return "Format: /harga <id_menu> <harga>\nContoh: /harga jando 16000";
+  if (!id || priceStr === undefined) return "Format: /harga [id_menu] [harga]\nContoh: /harga jando 16000";
   const price = Number(priceStr);
   if (Number.isNaN(price) || price < 0) return "Harga tidak valid.";
   const m = await env.DB.prepare("SELECT * FROM menu WHERE id = ?").bind(id).first();
@@ -189,7 +189,7 @@ async function cmdLaporan(env) {
 
 async function cmdCari(env, args) {
   const [id] = args;
-  if (!id) return "Format: /cari <no.pesanan>";
+  if (!id) return "Format: /cari [no.pesanan]";
   const o = await env.DB.prepare("SELECT * FROM orders WHERE id = ?").bind(id.toUpperCase()).first();
   if (!o) return `Pesanan \`${id}\` tidak ditemukan.`;
   return formatOrderForTelegram(o);
