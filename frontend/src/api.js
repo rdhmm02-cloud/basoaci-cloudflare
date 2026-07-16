@@ -1,6 +1,6 @@
 // Ganti nilai ini dengan URL Worker kamu setelah deploy, contoh:
 // export const API_BASE = "https://basoaci-api.namakamu.workers.dev";
-export const API_BASE = "https://basoaci-api.YOUR_SUBDOMAIN.workers.dev";
+export const API_BASE = "https://basoaci-cloudflare.ridhommaruf122-9ff.workers.dev";
 
 function getAdminToken() {
   return localStorage.getItem("basoaci_admin_token") || "";
