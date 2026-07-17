@@ -53,6 +53,10 @@ export default {
         const id = path.split("/")[3];
         return api.cancelOrder(request, env, id, ctx);
       }
+    if (path.match(/^\/api\/orders\/[^\/]+\/cancel-by-buyer$/) && method === "POST") {
+      const id = path.split("/")[3];
+      return api.cancelOrderByBuyer(request, env, id);
+    }
       if (path.match(/^\/api\/orders\/[^/]+\/shipping$/) && method === "PATCH") {
         const id = path.split("/")[3];
         return api.updateShippingCost(request, env, id);

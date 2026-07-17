@@ -53,6 +53,7 @@ export const api = {
   createOrder: (order) => request("/api/orders", { method: "POST", body: JSON.stringify(order) }),
   updateOrderStatus: (id, status) => request(`/api/orders/${id}/status`, { method: "PATCH", body: JSON.stringify({ status }) }),
   cancelOrder: (id, reason) => request(`/api/orders/${id}/cancel`, { method: "POST", body: JSON.stringify({ reason }) }),
+  cancelOrderByBuyer: (id, phone) => request(`/api/orders/${id}/cancel-by-buyer`, { method: "POST", body: JSON.stringify({ phone }) }),
   updateShippingCost: (id, shippingCost) => request(`/api/orders/${id}/shipping`, { method: "PATCH", body: JSON.stringify({ shippingCost }) }),
 
   // Testimonials

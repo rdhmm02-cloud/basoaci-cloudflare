@@ -1392,7 +1392,7 @@ function HistoryView({ cancelOrder }) {
             <div className="grid gap-2">
               <p className="text-[rgb(var(--text-rgb)/40%)] text-xs mb-1">{results.length} pesanan ditemukan</p>
               {results.map((o) => (
-                <HistoryOrderCard key={o.id} o={o} cancelOrder={cancelOrder} />
+                <HistoryOrderCard key={o.id} o={o} phone={searchedPhone} onCancelled={handleSearch} />
               ))}
             </div>
           )}
@@ -1402,13 +1402,23 @@ function HistoryView({ cancelOrder }) {
   );
 }
 
-function HistoryOrderCard({ o, cancelOrder }) {
+function HistoryOrderCard({ o, phone, onCancelled }) {
   const [showCancelConfirm, setShowCancelConfirm] = useState(false);
+  const [cancelling, setCancelling] = useState(false);
+  const [cancelError, setCancelError] = useState("");
   const canCancel = o.status === "Masuk";
 
-  function handleConfirmCancel() {
-    cancelOrder(o.id, "Dibatalkan oleh pembeli");
-    setShowCancelConfirm(false);
+  async function handleConfirmCancel() {
+    setCancelling(true);
+    setCancelError("");
+    try {
+      await api.cancelOrderByBuyer(o.id, phone);
+      setShowCancelConfirm(false);
+      onCancelled && onCancelled();
+    } catch (e) {
+      setCancelError(e.message || "Gagal membatalkan pesanan.");
+    }
+    setCancelling(false);
   }
 
   return (
@@ -1443,16 +1453,19 @@ function HistoryOrderCard({ o, cancelOrder }) {
         showCancelConfirm ? (
           <div className="mt-3 rounded-lg bg-red-500/10 border border-red-500/30 p-3 grid gap-2">
             <p className="text-red-300 text-xs font-semibold">Yakin batalkan pesanan ini?</p>
+            {cancelError && <p className="text-red-300 text-[11px]">{cancelError}</p>}
             <div className="flex items-center gap-2">
               <button
                 onClick={handleConfirmCancel}
-                className="text-xs font-semibold px-3 py-1.5 rounded-full bg-red-500/80 text-[rgb(var(--text-rgb))] hover:bg-red-500"
+                disabled={cancelling}
+                className="text-xs font-semibold px-3 py-1.5 rounded-full bg-red-500/80 text-[rgb(var(--text-rgb))] hover:bg-red-500 disabled:opacity-50"
               >
-                Ya, batalkan
+                {cancelling ? "Membatalkan..." : "Ya, batalkan"}
               </button>
               <button
                 onClick={() => setShowCancelConfirm(false)}
-                className="text-xs font-semibold px-3 py-1.5 rounded-full text-[rgb(var(--text-rgb)/50%)] hover:text-[rgb(var(--text-rgb))] bg-[rgb(var(--bg-rgb))]"
+                disabled={cancelling}
+                className="text-xs font-semibold px-3 py-1.5 rounded-full text-[rgb(var(--text-rgb)/50%)] hover:text-[rgb(var(--text-rgb))] bg-[rgb(var(--bg-rgb))] disabled:opacity-50"
               >
                 Tidak
               </button>

@@ -274,6 +274,44 @@ export async function cancelOrder(request, env, id, ctx) {
   return json({ ok: true });
 }
 
+
+// Public: allow a buyer to cancel their own order (no admin auth).
+// Requires BOTH the exact order id AND a matching phone number as proof of ownership.
+export async function cancelOrderByBuyer(request, env, id) {
+  const body = await request.json().catch(() => ({}));
+  const phone = (body.phone || "").replace(/\D/g, "");
+  if (!phone) return json({ error: "Nomor HP wajib diisi" }, 400);
+
+  const order = await env.DB.prepare("SELECT * FROM orders WHERE id = ?").bind(id).first();
+  if (!order) return json({ error: "Order tidak ditemukan" }, 404);
+
+  const orderDigits = (order.buyer_phone || "").replace(/\D/g, "").slice(-9);
+  const inputDigits = phone.slice(-9);
+  if (!orderDigits || orderDigits !== inputDigits) {
+    return json({ error: "Nomor HP tidak cocok dengan pesanan ini" }, 403);
+  }
+
+  if (order.status !== "Masuk") {
+    return json({ error: "Pesanan ini sudah tidak bisa dibatalkan sendiri" }, 400);
+  }
+
+  if (order.stock_deducted) {
+    const items = JSON.parse(order.items_json || "[]");
+    for (const it of items) {
+      await env.DB.prepare("UPDATE menu SET stock = stock + ? WHERE id = ? AND stock > 0")
+        .bind(it.qty, it.id)
+        .run();
+    }
+  }
+
+  await env.DB.prepare(
+    "UPDATE orders SET status = 'Dibatalkan', cancel_reason = ?, cancelled_at = datetime('now'), stock_deducted = 0 WHERE id = ?"
+  )
+    .bind("Dibatalkan oleh pembeli", id)
+    .run();
+
+  return json({ ok: true });
+}
 export async function updateShippingCost(request, env, id) {
   if (!(await requireAdmin(request, env))) return json({ error: "Unauthorized" }, 401);
   const body = await request.json().catch(() => ({}));
