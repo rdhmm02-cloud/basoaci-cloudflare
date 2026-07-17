@@ -780,6 +780,8 @@ export default function BasoAciApp() {
           todayOrders={todayOrders}
           todayRevenue={todayRevenue}
           pendingCount={pendingCount}
+            newOrderCount={newOrderCount}
+            setNewOrderCount={setNewOrderCount}
           logoutAdmin={logoutAdmin}
           shopInfo={shopInfo}
           saveShopInfo={saveShopInfo}
@@ -1501,7 +1503,7 @@ function AdminGate({ pinInput, setPinInput, pinError, checkPin }) {
 }
 
 // ============= ADMIN VIEW =============
-function AdminView({ menu, orders, updateStatus, cancelOrder, updatePrice, updateDesc, updateStock, updatePoEta, addMenuItem, deleteMenuItem, updateShippingCost, todayOrders, todayRevenue, pendingCount, logoutAdmin, shopInfo, saveShopInfo, printLabel, sendLabelToWhatsApp, testimonials, setTestimonialStatus }) {
+function AdminView({ menu, orders, updateStatus, cancelOrder, updatePrice, updateDesc, updateStock, updatePoEta, addMenuItem, deleteMenuItem, updateShippingCost, todayOrders, todayRevenue, pendingCount, newOrderCount, setNewOrderCount, logoutAdmin, shopInfo, saveShopInfo, printLabel, sendLabelToWhatsApp, testimonials, setTestimonialStatus }) {
   const [tab, setTab] = useState("orders"); // orders | menu | report | shop | testimoni
   const pendingTestimonials = testimonials.filter((t) => t.status === "pending").length;
 

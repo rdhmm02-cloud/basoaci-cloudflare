@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bakso Aci SINDHEL_official</title>
+    <script>
+      window.addEventListener('error', function(e) {
+        document.body.innerHTML = '<pre style="color:#fff;background:#900;padding:16px;white-space:pre-wrap;font-size:14px;">ERROR:\n' + (e.error ? e.error.stack : e.message) + '</pre>';
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        document.body.innerHTML = '<pre style="color:#fff;background:#900;padding:16px;white-space:pre-wrap;font-size:14px;">PROMISE REJECTION:\n' + (e.reason && e.reason.stack ? e.reason.stack : e.reason) + '</pre>';
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
