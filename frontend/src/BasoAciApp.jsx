@@ -75,9 +75,6 @@ export default function BasoAciApp() {
   const logoTapTimer = useRef(null);
   const [storeOpen, setStoreOpen] = useState(isStoreOpen());
   const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
-  const [newOrderCount, setNewOrderCount] = useState(0);
-  const prevOrderIdsRef = useRef(null);
-  const notifAudioRef = useRef(null);
 
   useEffect(() => {
     document.documentElement.classList.toggle("light", theme === "light");
@@ -133,15 +130,6 @@ export default function BasoAciApp() {
     if (!isAdminAuthed) return;
     try {
       const { orders: o } = await api.listOrders();
-      const currentIds = new Set(o.map((x) => x.id));
-      if (prevOrderIdsRef.current) {
-        const newlyAdded = [...currentIds].filter((id) => !prevOrderIdsRef.current.has(id));
-        if (newlyAdded.length > 0) {
-          setNewOrderCount((c) => c + newlyAdded.length);
-          notifAudioRef.current?.play?.().catch(() => {});
-        }
-      }
-      prevOrderIdsRef.current = currentIds;
       setOrders(o);
     } catch (e) {
       if (e.status === 401) {
@@ -665,7 +653,6 @@ export default function BasoAciApp() {
       >
         {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
       </button>
-      <audio ref={notifAudioRef} src="/notif.mp3" preload="auto" />
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
         .font-display { font-family: 'Archivo Black', sans-serif; }
@@ -1538,17 +1525,12 @@ function AdminView({ menu, orders, updateStatus, cancelOrder, updatePrice, updat
         ].map((t) => (
           <button
             key={t.id}
-            onClick={() => { setTab(t.id); if (t.id === "orders") setNewOrderCount(0); }}
+            onClick={() => setTab(t.id)}
             className={`px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))] ${
               tab === t.id ? "bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))]" : "text-[rgb(var(--text-rgb)/60%)] hover:text-[rgb(var(--text-rgb))]"
             }`}
           >
             {t.icon} {t.label}
-              {t.id === "orders" && newOrderCount > 0 && (
-                <span className="bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] rounded-full text-[10px] w-4 h-4 flex items-center justify-center font-bold">
-                  {newOrderCount}
-                </span>
-              )}
             {t.id === "testimoni" && pendingTestimonials > 0 && (
               <span className="bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] rounded-full text-[10px] w-4 h-4 flex items-center justify-center font-bold">
                 {pendingTestimonials}
