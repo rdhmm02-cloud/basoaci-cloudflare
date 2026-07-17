@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { Flame, Plus, Minus, ShoppingBag, MessageCircle, ClipboardList, Settings2, TrendingUp, Check, Clock, X, ChefHat, ExternalLink, Lock, LogOut, Phone, Printer, Store, Star, MessageSquareHeart } from "lucide-react";
+import { Flame, Plus, Minus, ShoppingBag, MessageCircle, ClipboardList, Settings2, TrendingUp, Check, Clock, X, ChefHat, ExternalLink, Lock, LogOut, Phone, Printer, Store, Star, MessageSquareHeart, Sun, Moon } from "lucide-react";
 import { api, setAdminToken } from "./api.js";
 
 const WHATSAPP_NUMBER = "62882006769302";
@@ -74,6 +74,12 @@ export default function BasoAciApp() {
   const [logoTapCount, setLogoTapCount] = useState(0);
   const logoTapTimer = useRef(null);
   const [storeOpen, setStoreOpen] = useState(isStoreOpen());
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("light", theme === "light");
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     const openHour = Number(shopInfo.openHour ?? DEFAULT_OPEN_HOUR);
@@ -640,6 +646,13 @@ export default function BasoAciApp() {
 
   return (
     <div className="min-h-screen bg-[rgb(var(--bg-rgb))] font-sans">
+      <button
+        onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
+        aria-label="Ganti mode gelap/terang"
+        className="fixed bottom-5 right-5 z-50 w-11 h-11 rounded-full bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] flex items-center justify-center shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))]"
+      >
+        {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+      </button>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
         .font-display { font-family: 'Archivo Black', sans-serif; }
