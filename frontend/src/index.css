@@ -2,9 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-rgb: 28 21 18;
+  --text-rgb: 245 230 200;
+  --accent-rgb: 232 93 44;
+}
+
+:root.light {
+  --bg-rgb: 253 248 237;
+  --text-rgb: 28 21 18;
+  --accent-rgb: 201 73 31;
+}
+
 body {
-  background-color: #1c1512;
+  background-color: rgb(var(--bg-rgb));
   margin: 0;
+  transition: background-color 0.2s ease;
 }
 
 @font-face {

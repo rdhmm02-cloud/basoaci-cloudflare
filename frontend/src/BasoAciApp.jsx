@@ -629,8 +629,8 @@ export default function BasoAciApp() {
 
   if (!loaded) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#1C1512]">
-        <div className="flex flex-col items-center gap-3 text-[#F5E6C8]">
+      <div className="min-h-screen flex items-center justify-center bg-[rgb(var(--bg-rgb))]">
+        <div className="flex flex-col items-center gap-3 text-[rgb(var(--text-rgb))]">
           <ChefHat className="animate-pulse" size={32} />
           <span className="text-sm tracking-wide">Menyiapkan warung...</span>
         </div>
@@ -639,7 +639,7 @@ export default function BasoAciApp() {
   }
 
   return (
-    <div className="min-h-screen bg-[#1C1512] font-sans">
+    <div className="min-h-screen bg-[rgb(var(--bg-rgb))] font-sans">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
         .font-display { font-family: 'Archivo Black', sans-serif; }
@@ -656,33 +656,33 @@ export default function BasoAciApp() {
       `}</style>
 
       {/* Top nav toggle */}
-      <div className="sticky top-0 z-40 bg-[#1C1512]/95 backdrop-blur border-b border-[#F5E6C8]/10">
+      <div className="sticky top-0 z-40 bg-[rgb(var(--bg-rgb)/95%)] backdrop-blur border-b border-[rgb(var(--text-rgb)/10%)]">
         <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2 select-none cursor-pointer" onClick={handleLogoTap}>
-            <Flame size={20} className="text-[#E85D2C]" />
-            <span className="font-display text-[#F5E6C8] text-sm tracking-wide">BASO ACI</span>
+            <Flame size={20} className="text-[rgb(var(--accent-rgb))]" />
+            <span className="font-display text-[rgb(var(--text-rgb))] text-sm tracking-wide">BASO ACI</span>
           </div>
-          <div className="flex gap-1 bg-[#F5E6C8]/5 rounded-full p-1">
+          <div className="flex gap-1 bg-[rgb(var(--text-rgb)/5%)] rounded-full p-1">
             <button
               onClick={() => setView("order")}
-              className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C] ${
-                view === "order" ? "bg-[#E85D2C] text-[#1C1512]" : "text-[#F5E6C8]/60 hover:text-[#F5E6C8]"
+              className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))] ${
+                view === "order" ? "bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))]" : "text-[rgb(var(--text-rgb)/60%)] hover:text-[rgb(var(--text-rgb))]"
               }`}
             >
               Pesan
             </button>
             <button
               onClick={() => setView("testimoni")}
-              className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C] flex items-center gap-1 ${
-                view === "testimoni" ? "bg-[#E85D2C] text-[#1C1512]" : "text-[#F5E6C8]/60 hover:text-[#F5E6C8]"
+              className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))] flex items-center gap-1 ${
+                view === "testimoni" ? "bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))]" : "text-[rgb(var(--text-rgb)/60%)] hover:text-[rgb(var(--text-rgb))]"
               }`}
             >
               <MessageSquareHeart size={12} /> Testimoni
             </button>
             <button
               onClick={() => setView("riwayat")}
-              className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C] flex items-center gap-1 ${
-                view === "riwayat" ? "bg-[#E85D2C] text-[#1C1512]" : "text-[#F5E6C8]/60 hover:text-[#F5E6C8]"
+              className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))] flex items-center gap-1 ${
+                view === "riwayat" ? "bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))]" : "text-[rgb(var(--text-rgb)/60%)] hover:text-[rgb(var(--text-rgb))]"
               }`}
             >
               <ClipboardList size={12} /> Riwayat
@@ -692,7 +692,7 @@ export default function BasoAciApp() {
       </div>
 
       {toast && (
-        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 bg-[#F5E6C8] text-[#1C1512] px-4 py-2 rounded-lg text-sm font-medium shadow-lg">
+        <div className="fixed top-16 left-1/2 -translate-x-1/2 z-50 bg-[rgb(var(--text-rgb))] text-[rgb(var(--bg-rgb))] px-4 py-2 rounded-lg text-sm font-medium shadow-lg">
           {toast}
         </div>
       )}
@@ -817,31 +817,31 @@ function OrderView({
       {/* Hero */}
       <div className="relative pt-10 pb-8 text-center">
         <div className="relative inline-block">
-          <div className="steam absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-[#F5E6C8]/30 rounded-full blur-md" />
+          <div className="steam absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-[rgb(var(--text-rgb)/30%)] rounded-full blur-md" />
           <span className="text-5xl relative">🍲</span>
         </div>
-        <h1 className="font-display text-[#F5E6C8] text-3xl md:text-4xl mt-4 leading-tight">
+        <h1 className="font-display text-[rgb(var(--text-rgb))] text-3xl md:text-4xl mt-4 leading-tight">
           BASO ACI SINDHEL
         </h1>
-        <p className="text-[#E85D2C] font-mono text-xs tracking-[0.2em] mt-1 uppercase">
+        <p className="text-[rgb(var(--accent-rgb))] font-mono text-xs tracking-[0.2em] mt-1 uppercase">
           Panas · Gurih · Nampol
         </p>
       </div>
 
       {/* Info PO */}
-      <p className="text-center text-[#F5E6C8] font-bold text-sm mb-1">
+      <p className="text-center text-[rgb(var(--text-rgb))] font-bold text-sm mb-1">
         Jika stok habis, maka akan di alihkan ke PO dengan estimasi 1 hari
       </p>
-      <p className="text-center text-[#F5E6C8]/60 text-xs mb-4">
+      <p className="text-center text-[rgb(var(--text-rgb)/60%)] text-xs mb-4">
         Setiap menu dapat sambal terpisah
       </p>
 
       {/* Riwayat pesanan */}
       {buyerOrderHistory && buyerOrderHistory.length > 0 && (
-        <div className="mb-5 rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 px-4 py-3">
+        <div className="mb-5 rounded-2xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] px-4 py-3">
           <button
             onClick={() => setShowHistory((s) => !s)}
-            className="text-[#E85D2C] text-[11px] font-semibold hover:underline"
+            className="text-[rgb(var(--accent-rgb))] text-[11px] font-semibold hover:underline"
           >
             {showHistory ? "Sembunyikan" : "Lihat"} riwayat pesanan ({buyerOrderHistory.length})
           </button>
@@ -851,15 +851,15 @@ function OrderView({
       {showHistory && buyerOrderHistory && buyerOrderHistory.length > 0 && (
         <div className="grid gap-2 mb-5">
           {buyerOrderHistory.map((o) => (
-            <div key={o.id} className="rounded-xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-3">
+            <div key={o.id} className="rounded-xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] p-3">
               <div className="flex items-center justify-between gap-2">
-                <span className="font-mono text-[#F5E6C8]/70 text-xs">{o.id}</span>
+                <span className="font-mono text-[rgb(var(--text-rgb)/70%)] text-xs">{o.id}</span>
                 <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-[#4A7C59]/20 text-[#4A7C59]">{o.status}</span>
               </div>
-              <p className="text-[#F5E6C8]/50 text-[11px] mt-1">
+              <p className="text-[rgb(var(--text-rgb)/50%)] text-[11px] mt-1">
                 {o.items.map((i) => `${i.name} x${i.qty}`).join(", ")}
               </p>
-              <p className="text-[#E85D2C] font-mono text-xs mt-1 font-semibold">{rupiah(o.total)}</p>
+              <p className="text-[rgb(var(--accent-rgb))] font-mono text-xs mt-1 font-semibold">{rupiah(o.total)}</p>
             </div>
           ))}
         </div>
@@ -874,14 +874,14 @@ function OrderView({
           </p>
         </div>
       )}
-      <div className="rounded-xl bg-[#E85D2C]/10 border border-[#E85D2C]/25 px-4 py-2.5 mb-3 flex items-center gap-2">
-        <Flame size={14} className="text-[#E85D2C] shrink-0" />
-        <p className="text-[#F5E6C8]/80 text-xs">Setiap produk dapat sambal terpisah</p>
+      <div className="rounded-xl bg-[rgb(var(--accent-rgb)/10%)] border border-[rgb(var(--accent-rgb)/25%)] px-4 py-2.5 mb-3 flex items-center gap-2">
+        <Flame size={14} className="text-[rgb(var(--accent-rgb))] shrink-0" />
+        <p className="text-[rgb(var(--text-rgb)/80%)] text-xs">Setiap produk dapat sambal terpisah</p>
       </div>
-      <div className="rounded-xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 px-4 py-2.5 mb-3 flex items-center gap-2">
-        <ClipboardList size={14} className="text-[#F5E6C8]/50 shrink-0" />
-        <p className="text-[#F5E6C8]/60 text-xs">
-          Ingin membatalkan pesanan? Masuk ke menu <span className="font-semibold text-[#F5E6C8]">Riwayat</span> dan masukkan no. HP yang sudah kamu input saat memesan.
+      <div className="rounded-xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] px-4 py-2.5 mb-3 flex items-center gap-2">
+        <ClipboardList size={14} className="text-[rgb(var(--text-rgb)/50%)] shrink-0" />
+        <p className="text-[rgb(var(--text-rgb)/60%)] text-xs">
+          Ingin membatalkan pesanan? Masuk ke menu <span className="font-semibold text-[rgb(var(--text-rgb))]">Riwayat</span> dan masukkan no. HP yang sudah kamu input saat memesan.
         </p>
       </div>
       <div className={`grid gap-3 ${!storeOpen ? "opacity-50 pointer-events-none" : ""}`}>
@@ -892,31 +892,31 @@ function OrderView({
             <div
               key={item.id}
               className={`rounded-2xl border p-4 flex items-center gap-4 transition-colors ${
-                qty > 0 ? "bg-[#E85D2C]/10 border-[#E85D2C]/50" : isPo ? "bg-[#F5E6C8]/[0.03] border-[#F5E6C8]/10" : "bg-[#F5E6C8]/5 border-[#F5E6C8]/10"
+                qty > 0 ? "bg-[rgb(var(--accent-rgb)/10%)] border-[rgb(var(--accent-rgb)/50%)]" : isPo ? "bg-[rgb(var(--text-rgb))]/[0.03] border-[rgb(var(--text-rgb)/10%)]" : "bg-[rgb(var(--text-rgb)/5%)] border-[rgb(var(--text-rgb)/10%)]"
               }`}
             >
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <h3 className="text-[#F5E6C8] font-semibold text-sm">{item.name}</h3>
+                  <h3 className="text-[rgb(var(--text-rgb))] font-semibold text-sm">{item.name}</h3>
                   {item.tag && (
-                    <span className="text-[9px] font-bold uppercase tracking-wide bg-[#4A7C59] text-[#F5E6C8] px-2 py-0.5 rounded-full">
+                    <span className="text-[9px] font-bold uppercase tracking-wide bg-[#4A7C59] text-[rgb(var(--text-rgb))] px-2 py-0.5 rounded-full">
                       {item.tag}
                     </span>
                   )}
                   {isPo && (
-                    <span className="text-[9px] font-bold uppercase tracking-wide bg-[#E85D2C] text-[#1C1512] px-2 py-0.5 rounded-full flex items-center gap-1">
+                    <span className="text-[9px] font-bold uppercase tracking-wide bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] px-2 py-0.5 rounded-full flex items-center gap-1">
                       <Clock size={9} /> PO
                     </span>
                   )}
                 </div>
-                <p className="text-[#F5E6C8]/50 text-xs mt-1">{item.desc}</p>
+                <p className="text-[rgb(var(--text-rgb)/50%)] text-xs mt-1">{item.desc}</p>
                 {isPo && (
-                  <p className="text-[#E85D2C]/80 text-[10px] mt-1 flex items-center gap-1">
+                  <p className="text-[rgb(var(--accent-rgb)/80%)] text-[10px] mt-1 flex items-center gap-1">
                     <Clock size={10} /> Pre-order · estimasi siap {item.poEta || "1-2 jam"}
                   </p>
                 )}
                 <div className="flex items-center gap-3 mt-2">
-                  <span className="font-mono text-[#E85D2C] text-sm font-semibold">{rupiah(item.price)}</span>
+                  <span className="font-mono text-[rgb(var(--accent-rgb))] text-sm font-semibold">{rupiah(item.price)}</span>
                 </div>
               </div>
               <div className="flex items-center gap-3 shrink-0">
@@ -924,20 +924,20 @@ function OrderView({
                   <button
                     onClick={() => changeQty(item.id, -1)}
                     aria-label={`Kurangi ${item.name}`}
-                    className="w-8 h-8 rounded-full bg-[#F5E6C8]/10 text-[#F5E6C8] flex items-center justify-center hover:bg-[#F5E6C8]/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C]"
+                    className="w-8 h-8 rounded-full bg-[rgb(var(--text-rgb)/10%)] text-[rgb(var(--text-rgb))] flex items-center justify-center hover:bg-[rgb(var(--text-rgb)/20%)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))]"
                   >
                     <Minus size={14} />
                   </button>
                 )}
-                {qty > 0 && <span className="text-[#F5E6C8] font-mono text-sm w-4 text-center">{qty}</span>}
+                {qty > 0 && <span className="text-[rgb(var(--text-rgb))] font-mono text-sm w-4 text-center">{qty}</span>}
                 <button
                   onClick={() => changeQty(item.id, 1)}
                   aria-label={`Tambah ${item.name}`}
                   disabled={!isPo && qty >= (item.stock ?? 0)}
-                  className={`w-8 h-8 rounded-full flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5E6C8] ${
+                  className={`w-8 h-8 rounded-full flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--text-rgb))] ${
                     !isPo && qty >= (item.stock ?? 0)
-                      ? "bg-[#F5E6C8]/10 text-[#F5E6C8]/30 cursor-not-allowed"
-                      : "bg-[#E85D2C] text-[#1C1512] hover:bg-[#E85D2C]/80"
+                      ? "bg-[rgb(var(--text-rgb)/10%)] text-[rgb(var(--text-rgb)/30%)] cursor-not-allowed"
+                      : "bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] hover:bg-[rgb(var(--accent-rgb)/80%)]"
                   }`}
                 >
                   <Plus size={14} />
@@ -950,24 +950,24 @@ function OrderView({
 
       {/* Buyer info */}
       {itemCount > 0 && (
-        <div ref={buyerInfoRef} className="mt-8 rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-4 grid gap-3">
-          <h3 className="text-[#F5E6C8] font-semibold text-sm flex items-center gap-2">
-            <ShoppingBag size={15} className="text-[#E85D2C]" /> Data Pemesan
+        <div ref={buyerInfoRef} className="mt-8 rounded-2xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] p-4 grid gap-3">
+          <h3 className="text-[rgb(var(--text-rgb))] font-semibold text-sm flex items-center gap-2">
+            <ShoppingBag size={15} className="text-[rgb(var(--accent-rgb))]" /> Data Pemesan
           </h3>
           <input
             value={buyerName}
             onChange={(e) => setBuyerName(e.target.value)}
             placeholder="Nama kamu"
-            className="bg-[#1C1512] text-[#F5E6C8] placeholder-[#F5E6C8]/30 rounded-lg px-3 py-2.5 text-sm border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+            className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] placeholder-[rgb(var(--text-rgb)/30%)] rounded-lg px-3 py-2.5 text-sm border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
           />
           <input
             value={buyerPhone}
             onChange={(e) => setBuyerPhone(e.target.value)}
             placeholder="No. WhatsApp aktif kamu"
             type="tel"
-            className="bg-[#1C1512] text-[#F5E6C8] placeholder-[#F5E6C8]/30 rounded-lg px-3 py-2.5 text-sm border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+            className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] placeholder-[rgb(var(--text-rgb)/30%)] rounded-lg px-3 py-2.5 text-sm border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
           />
-          <p className="text-[#F5E6C8]/40 text-[11px] -mt-2">
+          <p className="text-[rgb(var(--text-rgb)/40%)] text-[11px] -mt-2">
             Wajib pakai nomor WhatsApp milikmu sendiri, sesuai HP yang kamu pakai untuk kirim pesan konfirmasi nanti. Pesanan dari nomor yang tidak cocok berisiko ditolak admin.
           </p>
           <div className="grid grid-cols-2 gap-2">
@@ -975,11 +975,11 @@ function OrderView({
               type="button"
               onClick={() => setDeliveryArea("dalam-kota")}
               style={{
-                backgroundColor: deliveryArea === "dalam-kota" ? "#1C1512" : "#F5E6C8",
-                color: deliveryArea === "dalam-kota" ? "#F5E6C8" : "#1C1512",
-                border: "2px solid #F5E6C8",
+                backgroundColor: deliveryArea === "dalam-kota" ? "rgb(var(--bg-rgb))" : "rgb(var(--text-rgb))",
+                color: deliveryArea === "dalam-kota" ? "rgb(var(--text-rgb))" : "rgb(var(--bg-rgb))",
+                border: "2px solid rgb(var(--text-rgb))",
               }}
-              className="text-sm font-semibold py-2.5 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C]"
+              className="text-sm font-semibold py-2.5 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))]"
             >
               Dalam Kota
             </button>
@@ -987,28 +987,28 @@ function OrderView({
               type="button"
               onClick={() => setDeliveryArea("luar-kota")}
               style={{
-                backgroundColor: deliveryArea === "luar-kota" ? "#1C1512" : "#F5E6C8",
-                color: deliveryArea === "luar-kota" ? "#F5E6C8" : "#1C1512",
-                border: "2px solid #F5E6C8",
+                backgroundColor: deliveryArea === "luar-kota" ? "rgb(var(--bg-rgb))" : "rgb(var(--text-rgb))",
+                color: deliveryArea === "luar-kota" ? "rgb(var(--text-rgb))" : "rgb(var(--bg-rgb))",
+                border: "2px solid rgb(var(--text-rgb))",
               }}
-              className="text-sm font-semibold py-2.5 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C]"
+              className="text-sm font-semibold py-2.5 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))]"
             >
               Luar Kota
             </button>
           </div>
           {deliveryArea === "dalam-kota" ? (
             <div className="grid gap-1.5">
-              <p className="text-[#F5E6C8]/50 text-xs">Pilih ekspedisi</p>
+              <p className="text-[rgb(var(--text-rgb)/50%)] text-xs">Pilih ekspedisi</p>
               <div className="grid grid-cols-2 gap-2">
                 <button
                   type="button"
                   onClick={() => setInCityExpedition("GoSend")}
                   style={{
-                    backgroundColor: inCityExpedition === "GoSend" ? "#E85D2C" : "#F5E6C8",
-                    color: "#1C1512",
-                    border: "2px solid #E85D2C",
+                    backgroundColor: inCityExpedition === "GoSend" ? "rgb(var(--accent-rgb))" : "rgb(var(--text-rgb))",
+                    color: "rgb(var(--bg-rgb))",
+                    border: "2px solid rgb(var(--accent-rgb))",
                   }}
-                  className="text-sm font-semibold py-2 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5E6C8]"
+                  className="text-sm font-semibold py-2 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--text-rgb))]"
                 >
                   GoSend
                 </button>
@@ -1016,19 +1016,19 @@ function OrderView({
                   type="button"
                   onClick={() => setInCityExpedition("Shopee Instan")}
                   style={{
-                    backgroundColor: inCityExpedition === "Shopee Instan" ? "#E85D2C" : "#F5E6C8",
-                    color: "#1C1512",
-                    border: "2px solid #E85D2C",
+                    backgroundColor: inCityExpedition === "Shopee Instan" ? "rgb(var(--accent-rgb))" : "rgb(var(--text-rgb))",
+                    color: "rgb(var(--bg-rgb))",
+                    border: "2px solid rgb(var(--accent-rgb))",
                   }}
-                  className="text-sm font-semibold py-2 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5E6C8]"
+                  className="text-sm font-semibold py-2 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--text-rgb))]"
                 >
                   Shopee Instan
                 </button>
               </div>
             </div>
           ) : (
-            <p className="text-[#F5E6C8]/50 text-xs -mt-1">
-              Ekspedisi: <span className="text-[#E85D2C] font-semibold">J&T</span>
+            <p className="text-[rgb(var(--text-rgb)/50%)] text-xs -mt-1">
+              Ekspedisi: <span className="text-[rgb(var(--accent-rgb))] font-semibold">J&T</span>
             </p>
           )}
           <textarea
@@ -1036,11 +1036,11 @@ function OrderView({
             onChange={(e) => setBuyerAddr(e.target.value)}
             placeholder="Alamat pengiriman"
             rows={2}
-            className="bg-[#1C1512] text-[#F5E6C8] placeholder-[#F5E6C8]/30 rounded-lg px-3 py-2.5 text-sm border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none resize-none"
+            className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] placeholder-[rgb(var(--text-rgb)/30%)] rounded-lg px-3 py-2.5 text-sm border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none resize-none"
           />
 
           <div className="grid gap-1.5 mt-1">
-            <p className="text-[#F5E6C8]/50 text-xs">Metode pembayaran</p>
+            <p className="text-[rgb(var(--text-rgb)/50%)] text-xs">Metode pembayaran</p>
             <div className="grid grid-cols-2 gap-2">
               {PAYMENT_METHODS.map((m) => (
                 <button
@@ -1048,17 +1048,17 @@ function OrderView({
                   type="button"
                   onClick={() => setPaymentMethod(m.id)}
                   style={{
-                    backgroundColor: paymentMethod === m.id ? "#E85D2C" : "#F5E6C8",
-                    color: "#1C1512",
-                    border: "2px solid #E85D2C",
+                    backgroundColor: paymentMethod === m.id ? "rgb(var(--accent-rgb))" : "rgb(var(--text-rgb))",
+                    color: "rgb(var(--bg-rgb))",
+                    border: "2px solid rgb(var(--accent-rgb))",
                   }}
-                  className="text-sm font-semibold py-2 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5E6C8]"
+                  className="text-sm font-semibold py-2 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--text-rgb))]"
                 >
                   {m.label}
                 </button>
               ))}
             </div>
-            <p className="text-[#F5E6C8]/40 text-[11px] mt-0.5">
+            <p className="text-[rgb(var(--text-rgb)/40%)] text-[11px] mt-0.5">
               No. rekening/tujuan pembayaran akan dikirim admin via WhatsApp setelah pesan kamu dibaca admin.
             </p>
           </div>
@@ -1067,34 +1067,34 @@ function OrderView({
 
       {lastOrderId && itemCount === 0 && !pendingOrder && (
         <div className="mt-6 rounded-2xl bg-[#4A7C59]/15 border border-[#4A7C59]/40 p-4 text-center">
-          <p className="text-[#F5E6C8] text-sm font-semibold">Pesanan terkirim ke WhatsApp admin.</p>
-          <p className="text-[#F5E6C8]/60 text-xs mt-1 font-mono">No. Pesanan: {lastOrderId}</p>
+          <p className="text-[rgb(var(--text-rgb))] text-sm font-semibold">Pesanan terkirim ke WhatsApp admin.</p>
+          <p className="text-[rgb(var(--text-rgb)/60%)] text-xs mt-1 font-mono">No. Pesanan: {lastOrderId}</p>
         </div>
       )}
 
       {/* Overlay konfirmasi: tunggu pembeli benar-benar kirim pesan WA */}
       {pendingOrder && (
-        <div className="fixed inset-0 z-50 bg-[#1C1512]/90 backdrop-blur-sm flex items-center justify-center px-4">
-          <div className="bg-[#1C1512] border border-[#F5E6C8]/15 rounded-2xl p-6 max-w-sm w-full text-center">
+        <div className="fixed inset-0 z-50 bg-[rgb(var(--bg-rgb)/90%)] backdrop-blur-sm flex items-center justify-center px-4">
+          <div className="bg-[rgb(var(--bg-rgb))] border border-[rgb(var(--text-rgb)/15%)] rounded-2xl p-6 max-w-sm w-full text-center">
             <MessageCircle size={32} className="text-[#4A7C59] mx-auto mb-3" />
-            <h3 className="text-[#F5E6C8] font-semibold text-base">Sudah kirim pesan WhatsApp-nya?</h3>
-            <p className="text-[#F5E6C8]/60 text-xs mt-2 leading-relaxed">
+            <h3 className="text-[rgb(var(--text-rgb))] font-semibold text-base">Sudah kirim pesan WhatsApp-nya?</h3>
+            <p className="text-[rgb(var(--text-rgb)/60%)] text-xs mt-2 leading-relaxed">
               Tab WhatsApp sudah kami buka dengan detail pesananmu. Pastikan pesan sudah benar-benar terkirim ke admin, lalu tekan tombol di bawah.
             </p>
             <p className="text-yellow-400/80 text-[11px] mt-2 leading-relaxed">
               Kirim pesan dari WhatsApp dengan nomor yang sama seperti yang kamu isi di form ({buyerPhone || "-"}). Pesanan dari nomor berbeda bisa ditolak admin.
             </p>
-            <p className="text-[#F5E6C8]/40 text-[10px] mt-2 font-mono">No. Pesanan: {pendingOrder.id}</p>
+            <p className="text-[rgb(var(--text-rgb)/40%)] text-[10px] mt-2 font-mono">No. Pesanan: {pendingOrder.id}</p>
             <div className="grid gap-2 mt-5">
               <button
                 onClick={confirmOrderSent}
-                className="bg-[#E85D2C] text-[#1C1512] font-semibold text-sm py-2.5 rounded-xl hover:bg-[#E85D2C]/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5E6C8] flex items-center justify-center gap-2"
+                className="bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] font-semibold text-sm py-2.5 rounded-xl hover:bg-[rgb(var(--accent-rgb)/85%)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--text-rgb))] flex items-center justify-center gap-2"
               >
                 <Check size={15} /> Ya, sudah saya kirim
               </button>
               <button
                 onClick={cancelPendingOrder}
-                className="text-[#F5E6C8]/50 text-xs py-2 hover:text-[#F5E6C8]"
+                className="text-[rgb(var(--text-rgb)/50%)] text-xs py-2 hover:text-[rgb(var(--text-rgb))]"
               >
                 Belum, batalkan
               </button>
@@ -1105,24 +1105,24 @@ function OrderView({
 
       {/* Sticky checkout bar */}
       {itemCount > 0 && !pendingOrder && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#1C1512] border-t border-[#F5E6C8]/10 px-4 py-3">
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-[rgb(var(--bg-rgb))] border-t border-[rgb(var(--text-rgb)/10%)] px-4 py-3">
           <div className="max-w-5xl mx-auto flex items-center gap-3">
             <div className="flex-1">
-              <p className="text-[#F5E6C8]/50 text-[10px] uppercase tracking-wide flex items-center gap-1.5">
+              <p className="text-[rgb(var(--text-rgb)/50%)] text-[10px] uppercase tracking-wide flex items-center gap-1.5">
                 {itemCount} item
                 {cartItems.some((i) => (i.stock ?? 0) <= 0) && (
-                  <span className="bg-[#E85D2C] text-[#1C1512] px-1.5 py-0.5 rounded-full text-[9px] font-bold flex items-center gap-0.5">
+                  <span className="bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] px-1.5 py-0.5 rounded-full text-[9px] font-bold flex items-center gap-0.5">
                     <Clock size={9} /> ada PO
                   </span>
                 )}
               </p>
-              <p className="text-[#F5E6C8] font-mono font-bold">{rupiah(total)}</p>
-              <p className="text-[#F5E6C8]/40 text-[10px] mt-0.5">Belum termasuk ongkos kirim</p>
+              <p className="text-[rgb(var(--text-rgb))] font-mono font-bold">{rupiah(total)}</p>
+              <p className="text-[rgb(var(--text-rgb)/40%)] text-[10px] mt-0.5">Belum termasuk ongkos kirim</p>
             </div>
             <button
               onClick={submitOrder}
               disabled={!storeOpen}
-              className="bg-[#E85D2C] text-[#1C1512] font-semibold text-sm px-5 py-3 rounded-xl flex items-center gap-2 hover:bg-[#E85D2C]/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5E6C8] disabled:opacity-40 disabled:cursor-not-allowed"
+              className="bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] font-semibold text-sm px-5 py-3 rounded-xl flex items-center gap-2 hover:bg-[rgb(var(--accent-rgb)/85%)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--text-rgb))] disabled:opacity-40 disabled:cursor-not-allowed"
             >
               <MessageCircle size={16} /> {storeOpen ? "Pesan via WhatsApp" : "Tutup"}
             </button>
@@ -1173,13 +1173,13 @@ function TestimonialView({ submitTestimonial, testimonials }) {
         <div className="w-14 h-14 rounded-2xl bg-[#4A7C59]/15 flex items-center justify-center mx-auto mb-4">
           <Check size={22} className="text-[#4A7C59]" />
         </div>
-        <h1 className="font-display text-[#F5E6C8] text-xl mb-1">MAKASIH!</h1>
-        <p className="text-[#F5E6C8]/50 text-xs mb-6">
+        <h1 className="font-display text-[rgb(var(--text-rgb))] text-xl mb-1">MAKASIH!</h1>
+        <p className="text-[rgb(var(--text-rgb)/50%)] text-xs mb-6">
           Testimoni kamu sudah kami terima dan akan ditinjau sebelum tampil.
         </p>
         <button
           onClick={() => setSuccess(false)}
-          className="text-[#E85D2C] text-xs font-semibold"
+          className="text-[rgb(var(--accent-rgb))] text-xs font-semibold"
         >
           Kirim testimoni lain
         </button>
@@ -1190,37 +1190,37 @@ function TestimonialView({ submitTestimonial, testimonials }) {
   return (
     <div className="max-w-md mx-auto px-4 pt-10 pb-16">
       <div className="text-center mb-6">
-        <div className="w-14 h-14 rounded-2xl bg-[#E85D2C]/15 flex items-center justify-center mx-auto mb-4">
-          <MessageSquareHeart size={22} className="text-[#E85D2C]" />
+        <div className="w-14 h-14 rounded-2xl bg-[rgb(var(--accent-rgb)/15%)] flex items-center justify-center mx-auto mb-4">
+          <MessageSquareHeart size={22} className="text-[rgb(var(--accent-rgb))]" />
         </div>
-        <h1 className="font-display text-[#F5E6C8] text-xl mb-1">CERITAKAN PENGALAMANMU</h1>
-        <p className="text-[#F5E6C8]/50 text-xs">
+        <h1 className="font-display text-[rgb(var(--text-rgb))] text-xl mb-1">CERITAKAN PENGALAMANMU</h1>
+        <p className="text-[rgb(var(--text-rgb)/50%)] text-xs">
           Testimoni hanya bisa diisi oleh pelanggan yang pernah order. Gunakan No. HP yang sama saat kamu memesan.
         </p>
       </div>
 
-      <div className="rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-4 grid gap-3">
+      <div className="rounded-2xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] p-4 grid gap-3">
         <label className="grid gap-1">
-          <span className="text-[#F5E6C8]/50 text-xs">No. HP saat order</span>
+          <span className="text-[rgb(var(--text-rgb)/50%)] text-xs">No. HP saat order</span>
           <input
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             type="tel"
             placeholder="0812xxxxxxx"
-            className="bg-[#1C1512] text-[#F5E6C8] placeholder-[#F5E6C8]/30 rounded-lg px-3 py-2.5 text-sm border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+            className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] placeholder-[rgb(var(--text-rgb)/30%)] rounded-lg px-3 py-2.5 text-sm border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
           />
         </label>
         <label className="grid gap-1">
-          <span className="text-[#F5E6C8]/50 text-xs">Nama (opsional, tampil di publik)</span>
+          <span className="text-[rgb(var(--text-rgb)/50%)] text-xs">Nama (opsional, tampil di publik)</span>
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Nama kamu"
-            className="bg-[#1C1512] text-[#F5E6C8] placeholder-[#F5E6C8]/30 rounded-lg px-3 py-2.5 text-sm border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+            className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] placeholder-[rgb(var(--text-rgb)/30%)] rounded-lg px-3 py-2.5 text-sm border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
           />
         </label>
         <div className="grid gap-1">
-          <span className="text-[#F5E6C8]/50 text-xs">Rating</span>
+          <span className="text-[rgb(var(--text-rgb)/50%)] text-xs">Rating</span>
           <div className="flex items-center gap-1 -ml-1.5">
             {[1, 2, 3, 4, 5].map((i) => (
               <button
@@ -1230,14 +1230,14 @@ function TestimonialView({ submitTestimonial, testimonials }) {
                 onMouseEnter={() => setHoverRating(i)}
                 onMouseLeave={() => setHoverRating(0)}
                 aria-label={`${i} bintang`}
-                className="p-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C] rounded"
+                className="p-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))] rounded"
               >
                 <Star
                   size={26}
                   className={`pointer-events-none ${
                     i <= (hoverRating || rating)
                       ? "text-yellow-400 fill-yellow-400"
-                      : "text-[#F5E6C8]/20"
+                      : "text-[rgb(var(--text-rgb)/20%)]"
                   }`}
                 />
               </button>
@@ -1245,13 +1245,13 @@ function TestimonialView({ submitTestimonial, testimonials }) {
           </div>
         </div>
         <label className="grid gap-1">
-          <span className="text-[#F5E6C8]/50 text-xs">Testimoni</span>
+          <span className="text-[rgb(var(--text-rgb)/50%)] text-xs">Testimoni</span>
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             rows={3}
             placeholder="Gimana rasanya, pelayanannya, dll."
-            className="bg-[#1C1512] text-[#F5E6C8] placeholder-[#F5E6C8]/30 rounded-lg px-3 py-2.5 text-sm border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none resize-none"
+            className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] placeholder-[rgb(var(--text-rgb)/30%)] rounded-lg px-3 py-2.5 text-sm border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none resize-none"
           />
         </label>
 
@@ -1259,7 +1259,7 @@ function TestimonialView({ submitTestimonial, testimonials }) {
 
         <button
           onClick={handleSubmit}
-          className="bg-[#E85D2C] text-[#1C1512] font-semibold text-sm py-3 rounded-xl hover:bg-[#E85D2C]/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5E6C8]"
+          className="bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] font-semibold text-sm py-3 rounded-xl hover:bg-[rgb(var(--accent-rgb)/85%)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--text-rgb))]"
         >
           Kirim Testimoni
         </button>
@@ -1268,35 +1268,35 @@ function TestimonialView({ submitTestimonial, testimonials }) {
       {/* Approved testimonials */}
       <div className="mt-10">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-[#F5E6C8] font-semibold text-sm">Kata Pelanggan</h2>
+          <h2 className="text-[rgb(var(--text-rgb))] font-semibold text-sm">Kata Pelanggan</h2>
           {approved.length > 0 && (
             <div className="flex items-center gap-1.5">
               <Star size={14} className="text-yellow-400 fill-yellow-400" />
-              <span className="text-[#F5E6C8] font-mono text-xs font-semibold">{avgRating.toFixed(1)}</span>
-              <span className="text-[#F5E6C8]/40 text-xs">({approved.length})</span>
+              <span className="text-[rgb(var(--text-rgb))] font-mono text-xs font-semibold">{avgRating.toFixed(1)}</span>
+              <span className="text-[rgb(var(--text-rgb)/40%)] text-xs">({approved.length})</span>
             </div>
           )}
         </div>
 
         {approved.length === 0 ? (
-          <p className="text-[#F5E6C8]/40 text-xs text-center py-6">Belum ada testimoni yang tampil.</p>
+          <p className="text-[rgb(var(--text-rgb)/40%)] text-xs text-center py-6">Belum ada testimoni yang tampil.</p>
         ) : (
           <div className="grid gap-3">
             {approved.map((t) => (
-              <div key={t.id} className="rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-4">
+              <div key={t.id} className="rounded-2xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] p-4">
                 <div className="flex items-center justify-between gap-3">
-                  <span className="text-[#F5E6C8] font-semibold text-sm">{t.name}</span>
+                  <span className="text-[rgb(var(--text-rgb))] font-semibold text-sm">{t.name}</span>
                   <div className="flex items-center gap-0.5">
                     {[1, 2, 3, 4, 5].map((i) => (
                       <Star
                         key={i}
                         size={12}
-                        className={i <= t.rating ? "text-yellow-400 fill-yellow-400" : "text-[#F5E6C8]/20"}
+                        className={i <= t.rating ? "text-yellow-400 fill-yellow-400" : "text-[rgb(var(--text-rgb)/20%)]"}
                       />
                     ))}
                   </div>
                 </div>
-                <p className="text-[#F5E6C8]/60 text-xs mt-2 leading-relaxed">{t.comment}</p>
+                <p className="text-[rgb(var(--text-rgb)/60%)] text-xs mt-2 leading-relaxed">{t.comment}</p>
               </div>
             ))}
           </div>
@@ -1328,11 +1328,11 @@ function HistoryView({ cancelOrder }) {
 
   return (
     <div className="max-w-md mx-auto px-4 pt-6 pb-32">
-      <div className="rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-5 grid gap-3">
-        <h3 className="text-[#F5E6C8] font-semibold text-sm flex items-center gap-2">
-          <ClipboardList size={15} className="text-[#E85D2C]" /> Cek Riwayat Pesanan
+      <div className="rounded-2xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] p-5 grid gap-3">
+        <h3 className="text-[rgb(var(--text-rgb))] font-semibold text-sm flex items-center gap-2">
+          <ClipboardList size={15} className="text-[rgb(var(--accent-rgb))]" /> Cek Riwayat Pesanan
         </h3>
-        <p className="text-[#F5E6C8]/50 text-xs -mt-1">
+        <p className="text-[rgb(var(--text-rgb)/50%)] text-xs -mt-1">
           Masukkan nomor HP yang kamu gunakan saat memesan untuk melihat riwayat pesananmu.
         </p>
         <div className="flex items-center gap-2">
@@ -1342,12 +1342,12 @@ function HistoryView({ cancelOrder }) {
             onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             placeholder="No. HP, mis. 0812xxxxxxx"
             type="tel"
-            className="flex-1 bg-[#1C1512] text-[#F5E6C8] placeholder-[#F5E6C8]/30 rounded-lg px-3 py-2.5 text-sm border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+            className="flex-1 bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] placeholder-[rgb(var(--text-rgb)/30%)] rounded-lg px-3 py-2.5 text-sm border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
           />
           <button
             onClick={handleSearch}
             disabled={!phoneInput.trim()}
-            className="shrink-0 bg-[#E85D2C] text-[#1C1512] font-semibold text-sm px-4 py-2.5 rounded-xl hover:bg-[#E85D2C]/85 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="shrink-0 bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] font-semibold text-sm px-4 py-2.5 rounded-xl hover:bg-[rgb(var(--accent-rgb)/85%)] disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Cari
           </button>
@@ -1357,12 +1357,12 @@ function HistoryView({ cancelOrder }) {
       {searchedPhone && (
         <div className="mt-5">
           {results.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-[#F5E6C8]/15 p-8 text-center">
-              <p className="text-[#F5E6C8]/50 text-sm">Belum ada pesanan dengan nomor ini.</p>
+            <div className="rounded-2xl border border-dashed border-[rgb(var(--text-rgb)/15%)] p-8 text-center">
+              <p className="text-[rgb(var(--text-rgb)/50%)] text-sm">Belum ada pesanan dengan nomor ini.</p>
             </div>
           ) : (
             <div className="grid gap-2">
-              <p className="text-[#F5E6C8]/40 text-xs mb-1">{results.length} pesanan ditemukan</p>
+              <p className="text-[rgb(var(--text-rgb)/40%)] text-xs mb-1">{results.length} pesanan ditemukan</p>
               {results.map((o) => (
                 <HistoryOrderCard key={o.id} o={o} cancelOrder={cancelOrder} />
               ))}
@@ -1384,28 +1384,28 @@ function HistoryOrderCard({ o, cancelOrder }) {
   }
 
   return (
-    <div className="rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-4">
+    <div className="rounded-2xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] p-4">
       <div className="flex items-start justify-between gap-2 flex-wrap">
         <div>
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="font-mono text-[#E85D2C] text-xs font-bold">{o.id}</span>
+            <span className="font-mono text-[rgb(var(--accent-rgb))] text-xs font-bold">{o.id}</span>
             <StatusBadge status={o.status} />
           </div>
-          <p className="text-[#F5E6C8]/40 text-[10px] font-mono mt-1">
+          <p className="text-[rgb(var(--text-rgb)/40%)] text-[10px] font-mono mt-1">
             {new Date(o.createdAt).toLocaleString("id-ID", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}
           </p>
         </div>
-        <p className="text-[#F5E6C8] font-mono font-bold text-sm">{rupiah(o.total)}</p>
+        <p className="text-[rgb(var(--text-rgb))] font-mono font-bold text-sm">{rupiah(o.total)}</p>
       </div>
-      <div className="mt-2 border-t border-[#F5E6C8]/10 pt-2 grid gap-0.5">
+      <div className="mt-2 border-t border-[rgb(var(--text-rgb)/10%)] pt-2 grid gap-0.5">
         {o.items.map((i, idx) => (
-          <p key={idx} className="text-[#F5E6C8]/60 text-xs">
+          <p key={idx} className="text-[rgb(var(--text-rgb)/60%)] text-xs">
             {i.name} × {i.qty}
-            {i.isPo && <span className="text-[#E85D2C] font-semibold"> · PO</span>}
+            {i.isPo && <span className="text-[rgb(var(--accent-rgb))] font-semibold"> · PO</span>}
           </p>
         ))}
       </div>
-      {o.buyerAddr && <p className="text-[#F5E6C8]/40 text-[11px] mt-2">{o.buyerAddr}</p>}
+      {o.buyerAddr && <p className="text-[rgb(var(--text-rgb)/40%)] text-[11px] mt-2">{o.buyerAddr}</p>}
 
       {o.status === "Dibatalkan" && o.cancelReason && (
         <p className="text-red-300/70 text-[11px] mt-2">Alasan: {o.cancelReason}</p>
@@ -1418,13 +1418,13 @@ function HistoryOrderCard({ o, cancelOrder }) {
             <div className="flex items-center gap-2">
               <button
                 onClick={handleConfirmCancel}
-                className="text-xs font-semibold px-3 py-1.5 rounded-full bg-red-500/80 text-[#F5E6C8] hover:bg-red-500"
+                className="text-xs font-semibold px-3 py-1.5 rounded-full bg-red-500/80 text-[rgb(var(--text-rgb))] hover:bg-red-500"
               >
                 Ya, batalkan
               </button>
               <button
                 onClick={() => setShowCancelConfirm(false)}
-                className="text-xs font-semibold px-3 py-1.5 rounded-full text-[#F5E6C8]/50 hover:text-[#F5E6C8] bg-[#1C1512]"
+                className="text-xs font-semibold px-3 py-1.5 rounded-full text-[rgb(var(--text-rgb)/50%)] hover:text-[rgb(var(--text-rgb))] bg-[rgb(var(--bg-rgb))]"
               >
                 Tidak
               </button>
@@ -1447,11 +1447,11 @@ function HistoryOrderCard({ o, cancelOrder }) {
 function AdminGate({ pinInput, setPinInput, pinError, checkPin }) {
   return (
     <div className="max-w-sm mx-auto px-4 pt-20 text-center">
-      <div className="w-14 h-14 rounded-2xl bg-[#E85D2C]/15 flex items-center justify-center mx-auto mb-4">
-        <Lock size={22} className="text-[#E85D2C]" />
+      <div className="w-14 h-14 rounded-2xl bg-[rgb(var(--accent-rgb)/15%)] flex items-center justify-center mx-auto mb-4">
+        <Lock size={22} className="text-[rgb(var(--accent-rgb))]" />
       </div>
-      <h1 className="font-display text-[#F5E6C8] text-xl mb-1">AKSES ADMIN</h1>
-      <p className="text-[#F5E6C8]/50 text-xs mb-6">Masukkan kode akses untuk melihat pesanan masuk.</p>
+      <h1 className="font-display text-[rgb(var(--text-rgb))] text-xl mb-1">AKSES ADMIN</h1>
+      <p className="text-[rgb(var(--text-rgb)/50%)] text-xs mb-6">Masukkan kode akses untuk melihat pesanan masuk.</p>
       <input
         type="password"
         value={pinInput}
@@ -1459,14 +1459,14 @@ function AdminGate({ pinInput, setPinInput, pinError, checkPin }) {
         onKeyDown={(e) => e.key === "Enter" && checkPin()}
         placeholder="Kode akses"
         autoFocus
-        className={`w-full bg-[#F5E6C8]/5 text-[#F5E6C8] text-center tracking-widest rounded-xl px-3 py-3 text-sm border outline-none mb-2 ${
-          pinError ? "border-red-500/60" : "border-[#F5E6C8]/10 focus:border-[#E85D2C]"
+        className={`w-full bg-[rgb(var(--text-rgb)/5%)] text-[rgb(var(--text-rgb))] text-center tracking-widest rounded-xl px-3 py-3 text-sm border outline-none mb-2 ${
+          pinError ? "border-red-500/60" : "border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))]"
         }`}
       />
       {pinError && <p className="text-red-400 text-xs mb-3">Kode salah. Coba lagi.</p>}
       <button
         onClick={checkPin}
-        className="w-full bg-[#E85D2C] text-[#1C1512] font-semibold text-sm py-3 rounded-xl hover:bg-[#E85D2C]/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5E6C8]"
+        className="w-full bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] font-semibold text-sm py-3 rounded-xl hover:bg-[rgb(var(--accent-rgb)/85%)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--text-rgb))]"
       >
         Masuk
       </button>
@@ -1483,12 +1483,12 @@ function AdminView({ menu, orders, updateStatus, cancelOrder, updatePrice, updat
     <div className="max-w-5xl mx-auto px-4 pb-16">
       <div className="pt-8 pb-4 flex items-start justify-between">
         <div>
-          <h1 className="font-display text-[#F5E6C8] text-2xl">DAPUR ADMIN</h1>
-          <p className="text-[#F5E6C8]/50 text-xs mt-1">Pantau pesanan masuk dan kelola warung dari sini.</p>
+          <h1 className="font-display text-[rgb(var(--text-rgb))] text-2xl">DAPUR ADMIN</h1>
+          <p className="text-[rgb(var(--text-rgb)/50%)] text-xs mt-1">Pantau pesanan masuk dan kelola warung dari sini.</p>
         </div>
         <button
           onClick={logoutAdmin}
-          className="text-[#F5E6C8]/50 hover:text-[#F5E6C8] text-xs flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#F5E6C8]/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C]"
+          className="text-[rgb(var(--text-rgb)/50%)] hover:text-[rgb(var(--text-rgb))] text-xs flex items-center gap-1 px-3 py-1.5 rounded-full bg-[rgb(var(--text-rgb)/5%)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))]"
         >
           <LogOut size={12} /> Keluar
         </button>
@@ -1502,7 +1502,7 @@ function AdminView({ menu, orders, updateStatus, cancelOrder, updatePrice, updat
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 bg-[#F5E6C8]/5 rounded-full p-1 w-fit mb-5 flex-wrap">
+      <div className="flex gap-1 bg-[rgb(var(--text-rgb)/5%)] rounded-full p-1 w-fit mb-5 flex-wrap">
         {[
           { id: "orders", label: "Pesanan", icon: <ClipboardList size={14} /> },
           { id: "menu", label: "Menu & Harga", icon: <Settings2 size={14} /> },
@@ -1513,13 +1513,13 @@ function AdminView({ menu, orders, updateStatus, cancelOrder, updatePrice, updat
           <button
             key={t.id}
             onClick={() => setTab(t.id)}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C] ${
-              tab === t.id ? "bg-[#E85D2C] text-[#1C1512]" : "text-[#F5E6C8]/60 hover:text-[#F5E6C8]"
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))] ${
+              tab === t.id ? "bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))]" : "text-[rgb(var(--text-rgb)/60%)] hover:text-[rgb(var(--text-rgb))]"
             }`}
           >
             {t.icon} {t.label}
             {t.id === "testimoni" && pendingTestimonials > 0 && (
-              <span className="bg-[#E85D2C] text-[#1C1512] rounded-full text-[10px] w-4 h-4 flex items-center justify-center font-bold">
+              <span className="bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] rounded-full text-[10px] w-4 h-4 flex items-center justify-center font-bold">
                 {pendingTestimonials}
               </span>
             )}
@@ -1540,11 +1540,11 @@ function AdminView({ menu, orders, updateStatus, cancelOrder, updatePrice, updat
 
 function StatCard({ label, value, icon, accent, small }) {
   return (
-    <div className={`rounded-xl p-3.5 border ${accent && value > 0 ? "bg-[#E85D2C]/10 border-[#E85D2C]/40" : "bg-[#F5E6C8]/5 border-[#F5E6C8]/10"}`}>
-      <div className="flex items-center gap-1.5 text-[#F5E6C8]/50 text-[10px] uppercase tracking-wide mb-1">
+    <div className={`rounded-xl p-3.5 border ${accent && value > 0 ? "bg-[rgb(var(--accent-rgb)/10%)] border-[rgb(var(--accent-rgb)/40%)]" : "bg-[rgb(var(--text-rgb)/5%)] border-[rgb(var(--text-rgb)/10%)]"}`}>
+      <div className="flex items-center gap-1.5 text-[rgb(var(--text-rgb)/50%)] text-[10px] uppercase tracking-wide mb-1">
         {icon} {label}
       </div>
-      <p className={`text-[#F5E6C8] font-mono font-bold ${small ? "text-sm" : "text-xl"}`}>{value}</p>
+      <p className={`text-[rgb(var(--text-rgb))] font-mono font-bold ${small ? "text-sm" : "text-xl"}`}>{value}</p>
     </div>
   );
 }
@@ -1595,27 +1595,27 @@ function OrdersTab({ orders, updateStatus, cancelOrder, updateShippingCost, prin
 
   if (orders.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-[#F5E6C8]/15 p-10 text-center">
-        <p className="text-[#F5E6C8]/50 text-sm">Belum ada pesanan masuk. Pesanan baru akan muncul di sini otomatis.</p>
+      <div className="rounded-2xl border border-dashed border-[rgb(var(--text-rgb)/15%)] p-10 text-center">
+        <p className="text-[rgb(var(--text-rgb)/50%)] text-sm">Belum ada pesanan masuk. Pesanan baru akan muncul di sini otomatis.</p>
       </div>
     );
   }
 
   return (
     <div className="grid gap-3">
-      <div className="flex items-center gap-2 rounded-xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 px-3 py-2">
-        <Phone size={14} className="text-[#E85D2C] shrink-0" />
+      <div className="flex items-center gap-2 rounded-xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] px-3 py-2">
+        <Phone size={14} className="text-[rgb(var(--accent-rgb))] shrink-0" />
         <input
           value={searchPhone}
           onChange={(e) => setSearchPhone(e.target.value)}
           placeholder="Cari riwayat pesanan berdasarkan no. HP..."
           type="tel"
-          className="flex-1 bg-transparent text-[#F5E6C8] placeholder-[#F5E6C8]/30 text-sm outline-none"
+          className="flex-1 bg-transparent text-[rgb(var(--text-rgb))] placeholder-[rgb(var(--text-rgb)/30%)] text-sm outline-none"
         />
         {searchPhone && (
           <button
             onClick={() => setSearchPhone("")}
-            className="shrink-0 text-[#F5E6C8]/40 hover:text-[#F5E6C8]"
+            className="shrink-0 text-[rgb(var(--text-rgb)/40%)] hover:text-[rgb(var(--text-rgb))]"
             aria-label="Bersihkan pencarian"
           >
             <X size={14} />
@@ -1626,14 +1626,14 @@ function OrdersTab({ orders, updateStatus, cancelOrder, updateShippingCost, prin
       <div className="flex items-center justify-between gap-2 flex-wrap">
         <button
           onClick={toggleSelectAll}
-          className="text-xs font-semibold text-[#F5E6C8]/60 hover:text-[#F5E6C8] flex items-center gap-1.5"
+          className="text-xs font-semibold text-[rgb(var(--text-rgb)/60%)] hover:text-[rgb(var(--text-rgb))] flex items-center gap-1.5"
         >
           <Check size={12} /> {filteredOrders.length > 0 && filteredOrders.every((o) => selectedIds.includes(o.id)) ? "Batalkan pilih semua" : "Pilih semua"}
         </button>
         {selectedIds.length > 0 && (
           <button
             onClick={handlePrintSelected}
-            className="text-xs font-semibold bg-[#E85D2C] text-[#1C1512] px-3 py-1.5 rounded-full hover:bg-[#E85D2C]/85 flex items-center gap-1.5"
+            className="text-xs font-semibold bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] px-3 py-1.5 rounded-full hover:bg-[rgb(var(--accent-rgb)/85%)] flex items-center gap-1.5"
           >
             <Printer size={12} /> Cetak Label Terpilih ({selectedIds.length})
           </button>
@@ -1641,11 +1641,11 @@ function OrdersTab({ orders, updateStatus, cancelOrder, updateShippingCost, prin
       </div>
 
       {searchDigits && (
-        <p className="text-[#F5E6C8]/40 text-xs -mt-1">{filteredOrders.length} pesanan ditemukan</p>
+        <p className="text-[rgb(var(--text-rgb)/40%)] text-xs -mt-1">{filteredOrders.length} pesanan ditemukan</p>
       )}
       {searchDigits && filteredOrders.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-[#F5E6C8]/15 p-10 text-center">
-          <p className="text-[#F5E6C8]/50 text-sm">Tidak ada pesanan dengan nomor ini.</p>
+        <div className="rounded-2xl border border-dashed border-[rgb(var(--text-rgb)/15%)] p-10 text-center">
+          <p className="text-[rgb(var(--text-rgb)/50%)] text-sm">Tidak ada pesanan dengan nomor ini.</p>
         </div>
       ) : (
       filteredOrders.map((o) => (
@@ -1681,25 +1681,25 @@ function PaperSizeDialog({ count, onChoose, onClose }) {
     { id: "a3", label: "Kertas A3", desc: "3 kolom per halaman" },
   ];
   return (
-    <div className="fixed inset-0 z-50 bg-[#1C1512]/90 backdrop-blur-sm flex items-center justify-center px-4">
-      <div className="bg-[#1C1512] border border-[#F5E6C8]/15 rounded-2xl p-5 max-w-sm w-full">
-        <h3 className="text-[#F5E6C8] font-semibold text-sm mb-1">Pilih ukuran kertas</h3>
-        <p className="text-[#F5E6C8]/50 text-xs mb-4">Mencetak {count} label pengiriman.</p>
+    <div className="fixed inset-0 z-50 bg-[rgb(var(--bg-rgb)/90%)] backdrop-blur-sm flex items-center justify-center px-4">
+      <div className="bg-[rgb(var(--bg-rgb))] border border-[rgb(var(--text-rgb)/15%)] rounded-2xl p-5 max-w-sm w-full">
+        <h3 className="text-[rgb(var(--text-rgb))] font-semibold text-sm mb-1">Pilih ukuran kertas</h3>
+        <p className="text-[rgb(var(--text-rgb)/50%)] text-xs mb-4">Mencetak {count} label pengiriman.</p>
         <div className="grid gap-2">
           {options.map((opt) => (
             <button
               key={opt.id}
               onClick={() => onChoose(opt.id)}
-              className="text-left rounded-xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 hover:border-[#E85D2C]/50 px-4 py-3 transition-colors"
+              className="text-left rounded-xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] hover:border-[rgb(var(--accent-rgb)/50%)] px-4 py-3 transition-colors"
             >
-              <p className="text-[#F5E6C8] text-sm font-semibold">{opt.label}</p>
-              <p className="text-[#F5E6C8]/50 text-xs mt-0.5">{opt.desc}</p>
+              <p className="text-[rgb(var(--text-rgb))] text-sm font-semibold">{opt.label}</p>
+              <p className="text-[rgb(var(--text-rgb)/50%)] text-xs mt-0.5">{opt.desc}</p>
             </button>
           ))}
         </div>
         <button
           onClick={onClose}
-          className="mt-3 w-full text-center text-[#F5E6C8]/50 text-xs py-2 hover:text-[#F5E6C8]"
+          className="mt-3 w-full text-center text-[rgb(var(--text-rgb)/50%)] text-xs py-2 hover:text-[rgb(var(--text-rgb))]"
         >
           Batal
         </button>
@@ -1756,8 +1756,8 @@ function OrderCard({ o, updateStatus, cancelOrder, updateShippingCost, printLabe
   return (
         <div
           id={"order-" + o.id}
-          className={`rounded-2xl border p-4 scroll-mt-20 target:border-[#E85D2C] ${
-            isCancelled ? "bg-red-500/5 border-red-500/20" : "bg-[#F5E6C8]/5 border-[#F5E6C8]/10"
+          className={`rounded-2xl border p-4 scroll-mt-20 target:border-[rgb(var(--accent-rgb))] ${
+            isCancelled ? "bg-red-500/5 border-red-500/20" : "bg-[rgb(var(--text-rgb)/5%)] border-[rgb(var(--text-rgb)/10%)]"
           }`}
         >
           <div className="flex items-start justify-between gap-3 flex-wrap">
@@ -1766,23 +1766,23 @@ function OrderCard({ o, updateStatus, cancelOrder, updateShippingCost, printLabe
                 type="checkbox"
                 checked={!!selected}
                 onChange={onToggleSelect}
-                className="accent-[#E85D2C] mt-1 shrink-0"
+                className="accent-[rgb(var(--accent-rgb))] mt-1 shrink-0"
                 aria-label={`Pilih pesanan ${o.id}`}
               />
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-[#E85D2C] text-xs font-bold">{o.id}</span>
+                  <span className="font-mono text-[rgb(var(--accent-rgb))] text-xs font-bold">{o.id}</span>
                   <StatusBadge status={o.status} />
                   {o.isPo && (
-                    <span className="text-[9px] font-bold uppercase bg-[#E85D2C] text-[#1C1512] px-2 py-0.5 rounded-full flex items-center gap-1">
+                    <span className="text-[9px] font-bold uppercase bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] px-2 py-0.5 rounded-full flex items-center gap-1">
                       <Clock size={9} /> PO
                     </span>
                   )}
                 </div>
-                <p className="text-[#F5E6C8] font-semibold text-sm mt-1">{o.buyerName}</p>
-                {o.buyerPhone && <p className="text-[#F5E6C8]/50 text-xs">{o.buyerPhone}</p>}
+                <p className="text-[rgb(var(--text-rgb))] font-semibold text-sm mt-1">{o.buyerName}</p>
+                {o.buyerPhone && <p className="text-[rgb(var(--text-rgb)/50%)] text-xs">{o.buyerPhone}</p>}
                 {o.deliveryArea && (
-                  <p className="text-[#E85D2C]/80 text-[10px] font-semibold uppercase mt-0.5">
+                  <p className="text-[rgb(var(--accent-rgb)/80%)] text-[10px] font-semibold uppercase mt-0.5">
                     {o.deliveryArea === "dalam-kota" ? "Dalam Kota" : "Luar Kota"} · {o.expedition || (o.deliveryArea === "dalam-kota" ? "GoSend" : "J&T")}
                 </p>
               )}
@@ -1791,23 +1791,23 @@ function OrderCard({ o, updateStatus, cancelOrder, updateShippingCost, printLabe
                   Bayar: {PAYMENT_METHODS.find((p) => p.id === o.paymentMethod)?.label || o.paymentMethod}
                 </p>
               )}
-              <p className="text-[#F5E6C8]/50 text-xs">{o.buyerAddr}</p>
+              <p className="text-[rgb(var(--text-rgb)/50%)] text-xs">{o.buyerAddr}</p>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-[#F5E6C8]/40 text-[10px] font-mono">
+              <p className="text-[rgb(var(--text-rgb)/40%)] text-[10px] font-mono">
                 {new Date(o.createdAt).toLocaleString("id-ID", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}
               </p>
-              <p className="text-[#F5E6C8] font-mono font-bold mt-1">{rupiah(o.total)}</p>
+              <p className="text-[rgb(var(--text-rgb))] font-mono font-bold mt-1">{rupiah(o.total)}</p>
             </div>
           </div>
 
-          <div className="mt-3 border-t border-[#F5E6C8]/10 pt-3 grid gap-1">
+          <div className="mt-3 border-t border-[rgb(var(--text-rgb)/10%)] pt-3 grid gap-1">
             {o.items.map((i, idx) => (
-              <div key={idx} className="flex justify-between text-xs text-[#F5E6C8]/70">
+              <div key={idx} className="flex justify-between text-xs text-[rgb(var(--text-rgb)/70%)]">
                 <span>
                   {i.name} × {i.qty}
-                  {i.isPo && <span className="text-[#E85D2C] font-semibold"> · PO ({i.poEta || "1-2 jam"})</span>}
+                  {i.isPo && <span className="text-[rgb(var(--accent-rgb))] font-semibold"> · PO ({i.poEta || "1-2 jam"})</span>}
                 </span>
                 <span className="font-mono">{rupiah(i.price * i.qty)}</span>
               </div>
@@ -1830,8 +1830,8 @@ function OrderCard({ o, updateStatus, cancelOrder, updateShippingCost, printLabe
                 <button
                   key={s}
                   onClick={() => updateStatus(o.id, s)}
-                  className={`text-xs px-3 py-1.5 rounded-full font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C] flex items-center gap-1 ${
-                    o.status === s ? "bg-[#4A7C59] text-[#F5E6C8]" : "bg-[#1C1512] text-[#F5E6C8]/50 hover:text-[#F5E6C8]"
+                  className={`text-xs px-3 py-1.5 rounded-full font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))] flex items-center gap-1 ${
+                    o.status === s ? "bg-[#4A7C59] text-[rgb(var(--text-rgb))]" : "bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb)/50%)] hover:text-[rgb(var(--text-rgb))]"
                   }`}
                 >
                   {o.status === s && <Check size={11} />} {s}
@@ -1843,7 +1843,7 @@ function OrderCard({ o, updateStatus, cancelOrder, updateShippingCost, printLabe
           {!isCancelled && (
             <div className="mt-3 flex items-center gap-2 flex-wrap">
               <label className="flex items-center gap-1.5">
-                <span className="text-[#F5E6C8]/40 text-xs whitespace-nowrap">Ongkir</span>
+                <span className="text-[rgb(var(--text-rgb)/40%)] text-xs whitespace-nowrap">Ongkir</span>
                 <input
                   type="number"
                   min={0}
@@ -1851,23 +1851,23 @@ function OrderCard({ o, updateStatus, cancelOrder, updateShippingCost, printLabe
                   value={o.shippingCost ?? ""}
                   onChange={(e) => updateShippingCost(o.id, e.target.value)}
                   placeholder="0"
-                  className="w-24 bg-[#1C1512] text-[#F5E6C8] font-mono text-xs rounded-lg px-2 py-1.5 border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+                  className="w-24 bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] font-mono text-xs rounded-lg px-2 py-1.5 border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
                 />
               </label>
               {o.shippingCost > 0 && (
-                <span className="text-[#F5E6C8]/40 text-[10px] font-mono">
+                <span className="text-[rgb(var(--text-rgb)/40%)] text-[10px] font-mono">
                   Total + ongkir: {rupiah(o.total + (o.shippingCost || 0))}
                 </span>
               )}
               <button
                 onClick={() => sendLabelToWhatsApp(o)}
-                className="text-xs px-3 py-1.5 rounded-full bg-[#1C1512] text-[#F5E6C8]/50 hover:text-[#F5E6C8] flex items-center gap-1 ml-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C]"
+                className="text-xs px-3 py-1.5 rounded-full bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb)/50%)] hover:text-[rgb(var(--text-rgb))] flex items-center gap-1 ml-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))]"
               >
                 <MessageCircle size={11} /> Kirim ke WA
               </button>
               <button
                 onClick={() => printLabel(o)}
-                className="text-xs px-3 py-1.5 rounded-full bg-[#1C1512] text-[#F5E6C8]/50 hover:text-[#F5E6C8] flex items-center gap-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C]"
+                className="text-xs px-3 py-1.5 rounded-full bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb)/50%)] hover:text-[rgb(var(--text-rgb))] flex items-center gap-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))]"
               >
                 <Printer size={11} /> Cetak label
               </button>
@@ -1884,7 +1884,7 @@ function OrderCard({ o, updateStatus, cancelOrder, updateShippingCost, printLabe
                       key={r}
                       type="button"
                       onClick={() => setCancelReason(r)}
-                      className="text-[10px] font-semibold px-2 py-1 rounded-full bg-[#1C1512] text-[#F5E6C8]/60 hover:text-[#F5E6C8] border border-[#F5E6C8]/10"
+                      className="text-[10px] font-semibold px-2 py-1 rounded-full bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb)/60%)] hover:text-[rgb(var(--text-rgb))] border border-[rgb(var(--text-rgb)/10%)]"
                     >
                       {r}
                     </button>
@@ -1894,15 +1894,15 @@ function OrderCard({ o, updateStatus, cancelOrder, updateShippingCost, printLabe
                   value={cancelReason}
                   onChange={(e) => setCancelReason(e.target.value)}
                   placeholder="Alasan pembatalan (opsional)"
-                  className="bg-[#1C1512] text-[#F5E6C8] placeholder-[#F5E6C8]/30 text-xs rounded-lg px-3 py-2 border border-[#F5E6C8]/10 focus:border-red-400 outline-none"
+                  className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] placeholder-[rgb(var(--text-rgb)/30%)] text-xs rounded-lg px-3 py-2 border border-[rgb(var(--text-rgb)/10%)] focus:border-red-400 outline-none"
                 />
                 {!isPhoneMismatch && (
-                  <label className="flex items-center gap-2 text-[11px] text-[#F5E6C8]/70">
+                  <label className="flex items-center gap-2 text-[11px] text-[rgb(var(--text-rgb)/70%)]">
                     <input
                       type="checkbox"
                       checked={notifyBuyer}
                       onChange={(e) => setNotifyBuyer(e.target.checked)}
-                      className="accent-[#E85D2C]"
+                      className="accent-[rgb(var(--accent-rgb))]"
                     />
                     Kirim pemberitahuan pembatalan ke WhatsApp pembeli
                   </label>
@@ -1915,7 +1915,7 @@ function OrderCard({ o, updateStatus, cancelOrder, updateShippingCost, printLabe
                     <button
                       type="button"
                       onClick={copyMismatchMessage}
-                      className="text-[11px] font-semibold px-2.5 py-1.5 rounded-full bg-[#1C1512] text-[#F5E6C8]/70 hover:text-[#F5E6C8] flex items-center gap-1.5 w-fit"
+                      className="text-[11px] font-semibold px-2.5 py-1.5 rounded-full bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb)/70%)] hover:text-[rgb(var(--text-rgb))] flex items-center gap-1.5 w-fit"
                     >
                       {copiedMismatchMsg ? <><Check size={11} /> Tersalin</> : <>Salin pesan pembatalan untuk di-paste</>}
                     </button>
@@ -1924,13 +1924,13 @@ function OrderCard({ o, updateStatus, cancelOrder, updateShippingCost, printLabe
                 <div className="flex items-center gap-2">
                   <button
                     onClick={handleConfirmCancel}
-                    className="text-xs font-semibold px-3 py-1.5 rounded-full bg-red-500/80 text-[#F5E6C8] hover:bg-red-500"
+                    className="text-xs font-semibold px-3 py-1.5 rounded-full bg-red-500/80 text-[rgb(var(--text-rgb))] hover:bg-red-500"
                   >
                     Ya, batalkan pesanan
                   </button>
                   <button
                     onClick={() => { setShowCancelConfirm(false); setCancelReason(""); }}
-                    className="text-xs font-semibold px-3 py-1.5 rounded-full text-[#F5E6C8]/50 hover:text-[#F5E6C8] bg-[#1C1512]"
+                    className="text-xs font-semibold px-3 py-1.5 rounded-full text-[rgb(var(--text-rgb)/50%)] hover:text-[rgb(var(--text-rgb))] bg-[rgb(var(--bg-rgb))]"
                   >
                     Batal
                   </button>
@@ -1953,7 +1953,7 @@ function OrderCard({ o, updateStatus, cancelOrder, updateShippingCost, printLabe
 
 function StatusBadge({ status }) {
   const styles = {
-    Masuk: "bg-[#E85D2C]/20 text-[#E85D2C]",
+    Masuk: "bg-[rgb(var(--accent-rgb)/20%)] text-[rgb(var(--accent-rgb))]",
     Diproses: "bg-yellow-500/15 text-yellow-400",
     Selesai: "bg-[#4A7C59]/20 text-[#4A7C59]",
     Dibatalkan: "bg-red-500/15 text-red-400",
@@ -1978,45 +1978,45 @@ function MenuTab({ menu, updatePrice, updateDesc, updateStock, updatePoEta, addM
       {!showAddForm ? (
         <button
           onClick={() => setShowAddForm(true)}
-          className="rounded-2xl border border-dashed border-[#E85D2C]/40 text-[#E85D2C] font-semibold text-sm py-3 flex items-center justify-center gap-2 hover:bg-[#E85D2C]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C]"
+          className="rounded-2xl border border-dashed border-[rgb(var(--accent-rgb)/40%)] text-[rgb(var(--accent-rgb))] font-semibold text-sm py-3 flex items-center justify-center gap-2 hover:bg-[rgb(var(--accent-rgb)/10%)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))]"
         >
           <Plus size={16} /> Tambah Menu Baru
         </button>
       ) : (
-        <div className="rounded-2xl bg-[#F5E6C8]/5 border border-[#E85D2C]/30 p-4 grid gap-2">
-          <h3 className="text-[#F5E6C8] font-semibold text-sm">Menu Baru</h3>
+        <div className="rounded-2xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--accent-rgb)/30%)] p-4 grid gap-2">
+          <h3 className="text-[rgb(var(--text-rgb))] font-semibold text-sm">Menu Baru</h3>
           <input
             type="text"
             value={newItem.name}
             onChange={(e) => setNewItem((s) => ({ ...s, name: e.target.value }))}
             placeholder="Nama menu"
-            className="bg-[#1C1512] text-[#F5E6C8] placeholder-[#F5E6C8]/30 text-sm rounded-lg px-3 py-2 border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+            className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] placeholder-[rgb(var(--text-rgb)/30%)] text-sm rounded-lg px-3 py-2 border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
           />
           <textarea
             value={newItem.desc}
             onChange={(e) => setNewItem((s) => ({ ...s, desc: e.target.value }))}
             rows={2}
             placeholder="Deskripsi menu"
-            className="bg-[#1C1512] text-[#F5E6C8]/70 placeholder-[#F5E6C8]/30 text-xs rounded-lg px-3 py-2 border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none resize-none"
+            className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb)/70%)] placeholder-[rgb(var(--text-rgb)/30%)] text-xs rounded-lg px-3 py-2 border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none resize-none"
           />
           <div className="flex items-center gap-3 flex-wrap">
             <label className="flex items-center gap-1.5">
-              <span className="text-[#F5E6C8]/40 text-xs">Harga Rp</span>
+              <span className="text-[rgb(var(--text-rgb)/40%)] text-xs">Harga Rp</span>
               <input
                 type="number"
                 value={newItem.price}
                 onChange={(e) => setNewItem((s) => ({ ...s, price: e.target.value }))}
-                className="w-24 bg-[#1C1512] text-[#F5E6C8] font-mono text-sm rounded-lg px-2 py-1.5 border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+                className="w-24 bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] font-mono text-sm rounded-lg px-2 py-1.5 border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
               />
             </label>
             <label className="flex items-center gap-1.5">
-              <span className="text-[#F5E6C8]/40 text-xs">Stok</span>
+              <span className="text-[rgb(var(--text-rgb)/40%)] text-xs">Stok</span>
               <input
                 type="number"
                 min={0}
                 value={newItem.stock}
                 onChange={(e) => setNewItem((s) => ({ ...s, stock: e.target.value }))}
-                className="w-20 bg-[#1C1512] text-[#F5E6C8] font-mono text-sm rounded-lg px-2 py-1.5 border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+                className="w-20 bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] font-mono text-sm rounded-lg px-2 py-1.5 border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
               />
             </label>
           </div>
@@ -2024,13 +2024,13 @@ function MenuTab({ menu, updatePrice, updateDesc, updateStock, updatePoEta, addM
             <button
               onClick={handleAdd}
               disabled={!newItem.name.trim()}
-              className="flex-1 bg-[#E85D2C] text-[#1C1512] font-semibold text-sm py-2 rounded-xl hover:bg-[#E85D2C]/85 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-1.5"
+              className="flex-1 bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] font-semibold text-sm py-2 rounded-xl hover:bg-[rgb(var(--accent-rgb)/85%)] disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-1.5"
             >
               <Check size={14} /> Simpan Menu
             </button>
             <button
               onClick={() => { setShowAddForm(false); setNewItem({ name: "", desc: "", price: "", stock: "" }); }}
-              className="px-4 py-2 rounded-xl text-sm font-semibold text-[#F5E6C8]/50 hover:text-[#F5E6C8] bg-[#1C1512]"
+              className="px-4 py-2 rounded-xl text-sm font-semibold text-[rgb(var(--text-rgb)/50%)] hover:text-[rgb(var(--text-rgb))] bg-[rgb(var(--bg-rgb))]"
             >
               Batal
             </button>
@@ -2042,20 +2042,20 @@ function MenuTab({ menu, updatePrice, updateDesc, updateStock, updatePoEta, addM
         const stock = item.stock ?? 0;
         const isPo = stock <= 0;
         return (
-          <div key={item.id} className="rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-4 grid gap-2">
+          <div key={item.id} className="rounded-2xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] p-4 grid gap-2">
             <div className="flex items-start justify-between gap-4 flex-wrap">
               <div className="flex items-center gap-2 flex-wrap">
-                <h3 className="text-[#F5E6C8] font-semibold text-sm">{item.name}</h3>
-                {item.tag && <span className="text-[9px] font-bold uppercase bg-[#4A7C59] text-[#F5E6C8] px-2 py-0.5 rounded-full">{item.tag}</span>}
-                {isPo && <span className="text-[9px] font-bold uppercase bg-[#E85D2C] text-[#1C1512] px-2 py-0.5 rounded-full">PO</span>}
+                <h3 className="text-[rgb(var(--text-rgb))] font-semibold text-sm">{item.name}</h3>
+                {item.tag && <span className="text-[9px] font-bold uppercase bg-[#4A7C59] text-[rgb(var(--text-rgb))] px-2 py-0.5 rounded-full">{item.tag}</span>}
+                {isPo && <span className="text-[9px] font-bold uppercase bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] px-2 py-0.5 rounded-full">PO</span>}
               </div>
               <div className="flex items-center gap-2 shrink-0">
-                <span className="text-[#F5E6C8]/40 text-xs font-mono">Rp</span>
+                <span className="text-[rgb(var(--text-rgb)/40%)] text-xs font-mono">Rp</span>
                 <input
                   type="number"
                   value={item.price}
                   onChange={(e) => updatePrice(item.id, e.target.value)}
-                  className="w-24 bg-[#1C1512] text-[#F5E6C8] font-mono text-sm rounded-lg px-2 py-1.5 border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+                  className="w-24 bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] font-mono text-sm rounded-lg px-2 py-1.5 border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
                 />
               </div>
             </div>
@@ -2064,28 +2064,28 @@ function MenuTab({ menu, updatePrice, updateDesc, updateStock, updatePoEta, addM
               onChange={(e) => updateDesc(item.id, e.target.value)}
               rows={2}
               placeholder="Deskripsi menu"
-              className="w-full bg-[#1C1512] text-[#F5E6C8]/70 placeholder-[#F5E6C8]/30 text-xs rounded-lg px-3 py-2 border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none resize-none"
+              className="w-full bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb)/70%)] placeholder-[rgb(var(--text-rgb)/30%)] text-xs rounded-lg px-3 py-2 border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none resize-none"
             />
             <div className="flex items-center gap-3 flex-wrap">
               <label className="flex items-center gap-1.5">
-                <span className="text-[#F5E6C8]/40 text-xs">Stok</span>
+                <span className="text-[rgb(var(--text-rgb)/40%)] text-xs">Stok</span>
                 <input
                   type="number"
                   min={0}
                   value={stock}
                   onChange={(e) => updateStock(item.id, e.target.value)}
-                  className="w-20 bg-[#1C1512] text-[#F5E6C8] font-mono text-sm rounded-lg px-2 py-1.5 border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+                  className="w-20 bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] font-mono text-sm rounded-lg px-2 py-1.5 border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
                 />
               </label>
               {isPo && (
                 <label className="flex items-center gap-1.5 flex-1 min-w-[160px]">
-                  <span className="text-[#F5E6C8]/40 text-xs whitespace-nowrap">Estimasi PO</span>
+                  <span className="text-[rgb(var(--text-rgb)/40%)] text-xs whitespace-nowrap">Estimasi PO</span>
                   <input
                     type="text"
                     value={item.poEta || ""}
                     onChange={(e) => updatePoEta(item.id, e.target.value)}
                     placeholder="mis. 1-2 jam"
-                    className="flex-1 bg-[#1C1512] text-[#F5E6C8] text-sm rounded-lg px-2 py-1.5 border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+                    className="flex-1 bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] text-sm rounded-lg px-2 py-1.5 border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
                   />
                 </label>
               )}
@@ -2102,7 +2102,7 @@ function MenuTab({ menu, updatePrice, updateDesc, updateStock, updatePoEta, addM
                 </button>
                 <button
                   onClick={() => setConfirmDeleteId(null)}
-                  className="text-xs font-semibold text-[#F5E6C8]/50 hover:text-[#F5E6C8] px-2 py-1"
+                  className="text-xs font-semibold text-[rgb(var(--text-rgb)/50%)] hover:text-[rgb(var(--text-rgb))] px-2 py-1"
                 >
                   Batal
                 </button>
@@ -2118,7 +2118,7 @@ function MenuTab({ menu, updatePrice, updateDesc, updateStock, updatePoEta, addM
           </div>
         );
       })}
-      <p className="text-[#F5E6C8]/30 text-xs text-center mt-2">Stok 0 otomatis menjadikan menu berstatus PO di web pesanan. Perubahan tersimpan otomatis.</p>
+      <p className="text-[rgb(var(--text-rgb)/30%)] text-xs text-center mt-2">Stok 0 otomatis menjadikan menu berstatus PO di web pesanan. Perubahan tersimpan otomatis.</p>
     </div>
   );
 }
@@ -2202,13 +2202,13 @@ function ReportTab({ orders }) {
 
   return (
     <div className="grid gap-4">
-      <div className="rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-4">
-        <p className="text-[#F5E6C8] font-semibold text-sm mb-3">Filter periode</p>
+      <div className="rounded-2xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] p-4">
+        <p className="text-[rgb(var(--text-rgb))] font-semibold text-sm mb-3">Filter periode</p>
         <div className="grid grid-cols-3 gap-2">
           <select
             value={filterYear}
             onChange={(e) => { setFilterYear(e.target.value); setFilterMonth("all"); setFilterDay("all"); }}
-            className="bg-[#1C1512] text-[#F5E6C8] rounded-lg px-2 py-2 text-xs border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+            className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] rounded-lg px-2 py-2 text-xs border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
           >
             <option value="all">Semua Tahun</option>
             {years.map((y) => (
@@ -2219,7 +2219,7 @@ function ReportTab({ orders }) {
             value={filterMonth}
             onChange={(e) => { setFilterMonth(e.target.value); setFilterDay("all"); }}
             disabled={filterYear === "all"}
-            className="bg-[#1C1512] text-[#F5E6C8] rounded-lg px-2 py-2 text-xs border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none disabled:opacity-30"
+            className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] rounded-lg px-2 py-2 text-xs border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none disabled:opacity-30"
           >
             <option value="all">Semua Bulan</option>
             {monthNames.map((m, idx) => (
@@ -2230,7 +2230,7 @@ function ReportTab({ orders }) {
             value={filterDay}
             onChange={(e) => setFilterDay(e.target.value)}
             disabled={filterMonth === "all"}
-            className="bg-[#1C1512] text-[#F5E6C8] rounded-lg px-2 py-2 text-xs border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none disabled:opacity-30"
+            className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] rounded-lg px-2 py-2 text-xs border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none disabled:opacity-30"
           >
             <option value="all">Semua Hari</option>
             {Array.from({ length: daysInSelectedMonth }, (_, i) => i + 1).map((d) => (
@@ -2241,34 +2241,34 @@ function ReportTab({ orders }) {
         <button
           onClick={handleExportPdf}
           disabled={filteredOrders.length === 0}
-          className="mt-3 w-full flex items-center justify-center gap-2 rounded-lg bg-[#E85D2C] text-[#F5E6C8] text-xs font-semibold py-2.5 disabled:opacity-30 disabled:cursor-not-allowed transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C]"
+          className="mt-3 w-full flex items-center justify-center gap-2 rounded-lg bg-[rgb(var(--accent-rgb))] text-[rgb(var(--text-rgb))] text-xs font-semibold py-2.5 disabled:opacity-30 disabled:cursor-not-allowed transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))]"
         >
           <Printer size={14} /> Export PDF ({periodLabel()})
         </button>
       </div>
 
       <div className="grid grid-cols-2 gap-3">
-        <div className="rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-4">
-          <p className="text-[#F5E6C8]/50 text-[10px] uppercase tracking-wide mb-1">Total omzet</p>
-          <p className="text-[#F5E6C8] font-mono font-bold text-xl">{rupiah(totalRevenue)}</p>
+        <div className="rounded-2xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] p-4">
+          <p className="text-[rgb(var(--text-rgb)/50%)] text-[10px] uppercase tracking-wide mb-1">Total omzet</p>
+          <p className="text-[rgb(var(--text-rgb))] font-mono font-bold text-xl">{rupiah(totalRevenue)}</p>
         </div>
-        <div className="rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-4">
-          <p className="text-[#F5E6C8]/50 text-[10px] uppercase tracking-wide mb-1">Pesanan selesai</p>
-          <p className="text-[#F5E6C8] font-mono font-bold text-xl">{doneOrders.length} / {filteredOrders.length}</p>
+        <div className="rounded-2xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] p-4">
+          <p className="text-[rgb(var(--text-rgb)/50%)] text-[10px] uppercase tracking-wide mb-1">Pesanan selesai</p>
+          <p className="text-[rgb(var(--text-rgb))] font-mono font-bold text-xl">{doneOrders.length} / {filteredOrders.length}</p>
         </div>
       </div>
 
-      <div className="rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-4">
-        <p className="text-[#F5E6C8] font-semibold text-sm mb-3">Menu terlaris ({periodLabel()})</p>
+      <div className="rounded-2xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] p-4">
+        <p className="text-[rgb(var(--text-rgb))] font-semibold text-sm mb-3">Menu terlaris ({periodLabel()})</p>
         {topItems.length === 0 ? (
-          <p className="text-[#F5E6C8]/40 text-xs">Belum ada data.</p>
+          <p className="text-[rgb(var(--text-rgb)/40%)] text-xs">Belum ada data.</p>
         ) : (
           <div className="grid gap-2">
             {topItems.map(([name, qty], idx) => (
               <div key={name} className="flex items-center gap-3">
-                <span className="text-[#E85D2C] font-mono text-xs w-4">{idx + 1}</span>
-                <span className="text-[#F5E6C8] text-xs flex-1">{name}</span>
-                <span className="text-[#F5E6C8]/60 font-mono text-xs">{qty}x</span>
+                <span className="text-[rgb(var(--accent-rgb))] font-mono text-xs w-4">{idx + 1}</span>
+                <span className="text-[rgb(var(--text-rgb))] text-xs flex-1">{name}</span>
+                <span className="text-[rgb(var(--text-rgb)/60%)] font-mono text-xs">{qty}x</span>
               </div>
             ))}
           </div>
@@ -2281,8 +2281,8 @@ function ReportTab({ orders }) {
 function TestimonialsTab({ testimonials, setTestimonialStatus }) {
   if (testimonials.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-[#F5E6C8]/15 p-10 text-center">
-        <p className="text-[#F5E6C8]/50 text-sm">Belum ada testimoni masuk.</p>
+      <div className="rounded-2xl border border-dashed border-[rgb(var(--text-rgb)/15%)] p-10 text-center">
+        <p className="text-[rgb(var(--text-rgb)/50%)] text-sm">Belum ada testimoni masuk.</p>
       </div>
     );
   }
@@ -2293,44 +2293,44 @@ function TestimonialsTab({ testimonials, setTestimonialStatus }) {
   return (
     <div className="grid gap-3">
       {sorted.map((t) => (
-        <div key={t.id} className="rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-4">
+        <div key={t.id} className="rounded-2xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] p-4">
           <div className="flex items-start justify-between gap-3 flex-wrap">
             <div>
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-[#F5E6C8] font-semibold text-sm">{t.name}</span>
+                <span className="text-[rgb(var(--text-rgb))] font-semibold text-sm">{t.name}</span>
                 <TestimonialStatusBadge status={t.status} />
               </div>
-              <p className="text-[#F5E6C8]/50 text-xs mt-0.5">{t.phone}</p>
+              <p className="text-[rgb(var(--text-rgb)/50%)] text-xs mt-0.5">{t.phone}</p>
               <div className="flex items-center gap-0.5 mt-1.5">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <Star
                     key={i}
                     size={13}
-                    className={i <= t.rating ? "text-yellow-400 fill-yellow-400" : "text-[#F5E6C8]/20"}
+                    className={i <= t.rating ? "text-yellow-400 fill-yellow-400" : "text-[rgb(var(--text-rgb)/20%)]"}
                   />
                 ))}
               </div>
             </div>
-            <p className="text-[#F5E6C8]/40 text-[10px] font-mono">
+            <p className="text-[rgb(var(--text-rgb)/40%)] text-[10px] font-mono">
               {new Date(t.createdAt).toLocaleString("id-ID", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}
             </p>
           </div>
 
-          <p className="text-[#F5E6C8]/70 text-xs mt-3 leading-relaxed">{t.comment}</p>
+          <p className="text-[rgb(var(--text-rgb)/70%)] text-xs mt-3 leading-relaxed">{t.comment}</p>
 
           <div className="mt-3 flex items-center gap-2">
             <button
               onClick={() => setTestimonialStatus(t.id, "approved")}
-              className={`text-xs px-3 py-1.5 rounded-full font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C] flex items-center gap-1 ${
-                t.status === "approved" ? "bg-[#4A7C59] text-[#F5E6C8]" : "bg-[#1C1512] text-[#F5E6C8]/50 hover:text-[#F5E6C8]"
+              className={`text-xs px-3 py-1.5 rounded-full font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))] flex items-center gap-1 ${
+                t.status === "approved" ? "bg-[#4A7C59] text-[rgb(var(--text-rgb))]" : "bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb)/50%)] hover:text-[rgb(var(--text-rgb))]"
               }`}
             >
               <Check size={11} /> Setujui
             </button>
             <button
               onClick={() => setTestimonialStatus(t.id, "rejected")}
-              className={`text-xs px-3 py-1.5 rounded-full font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C] flex items-center gap-1 ${
-                t.status === "rejected" ? "bg-red-500/70 text-[#F5E6C8]" : "bg-[#1C1512] text-[#F5E6C8]/50 hover:text-[#F5E6C8]"
+              className={`text-xs px-3 py-1.5 rounded-full font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--accent-rgb))] flex items-center gap-1 ${
+                t.status === "rejected" ? "bg-red-500/70 text-[rgb(var(--text-rgb))]" : "bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb)/50%)] hover:text-[rgb(var(--text-rgb))]"
               }`}
             >
               <X size={11} /> Tolak
@@ -2365,51 +2365,51 @@ function ShopTab({ shopInfo, saveShopInfo }) {
   }
 
   return (
-    <div className="rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-4 grid gap-3 max-w-md">
-      <h3 className="text-[#F5E6C8] font-semibold text-sm flex items-center gap-2">
-        <Store size={15} className="text-[#E85D2C]" /> Data Pengirim (untuk label)
+    <div className="rounded-2xl bg-[rgb(var(--text-rgb)/5%)] border border-[rgb(var(--text-rgb)/10%)] p-4 grid gap-3 max-w-md">
+      <h3 className="text-[rgb(var(--text-rgb))] font-semibold text-sm flex items-center gap-2">
+        <Store size={15} className="text-[rgb(var(--accent-rgb))]" /> Data Pengirim (untuk label)
       </h3>
-      <p className="text-[#F5E6C8]/40 text-xs -mt-2">Data ini muncul di bagian "Pengirim" saat label dicetak.</p>
+      <p className="text-[rgb(var(--text-rgb)/40%)] text-xs -mt-2">Data ini muncul di bagian "Pengirim" saat label dicetak.</p>
       <label className="grid gap-1">
-        <span className="text-[#F5E6C8]/50 text-xs">Nama toko</span>
+        <span className="text-[rgb(var(--text-rgb)/50%)] text-xs">Nama toko</span>
         <input
           value={form.name}
           onChange={(e) => setForm({ ...form, name: e.target.value })}
-          className="bg-[#1C1512] text-[#F5E6C8] rounded-lg px-3 py-2.5 text-sm border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+          className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] rounded-lg px-3 py-2.5 text-sm border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
         />
       </label>
       <label className="grid gap-1">
-        <span className="text-[#F5E6C8]/50 text-xs">No. HP</span>
+        <span className="text-[rgb(var(--text-rgb)/50%)] text-xs">No. HP</span>
         <input
           value={form.phone}
           onChange={(e) => setForm({ ...form, phone: e.target.value })}
           placeholder="+62..."
-          className="bg-[#1C1512] text-[#F5E6C8] placeholder-[#F5E6C8]/30 rounded-lg px-3 py-2.5 text-sm border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+          className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] placeholder-[rgb(var(--text-rgb)/30%)] rounded-lg px-3 py-2.5 text-sm border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
         />
       </label>
       <label className="grid gap-1">
-        <span className="text-[#F5E6C8]/50 text-xs">Alamat</span>
+        <span className="text-[rgb(var(--text-rgb)/50%)] text-xs">Alamat</span>
         <textarea
           value={form.address}
           onChange={(e) => setForm({ ...form, address: e.target.value })}
           rows={2}
           placeholder="Alamat lengkap warung"
-          className="bg-[#1C1512] text-[#F5E6C8] placeholder-[#F5E6C8]/30 rounded-lg px-3 py-2.5 text-sm border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none resize-none"
+          className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] placeholder-[rgb(var(--text-rgb)/30%)] rounded-lg px-3 py-2.5 text-sm border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none resize-none"
         />
       </label>
 
-      <div className="border-t border-[#F5E6C8]/10 pt-3 grid gap-1">
-        <h3 className="text-[#F5E6C8] font-semibold text-sm flex items-center gap-2">
-          <Clock size={15} className="text-[#E85D2C]" /> Jam Buka Pemesanan
+      <div className="border-t border-[rgb(var(--text-rgb)/10%)] pt-3 grid gap-1">
+        <h3 className="text-[rgb(var(--text-rgb))] font-semibold text-sm flex items-center gap-2">
+          <Clock size={15} className="text-[rgb(var(--accent-rgb))]" /> Jam Buka Pemesanan
         </h3>
-        <p className="text-[#F5E6C8]/40 text-xs -mt-1 mb-1">Di luar jam ini, pembeli tidak bisa membuat pesanan baru. Waktu mengikuti WIB.</p>
+        <p className="text-[rgb(var(--text-rgb)/40%)] text-xs -mt-1 mb-1">Di luar jam ini, pembeli tidak bisa membuat pesanan baru. Waktu mengikuti WIB.</p>
         <div className="flex items-center gap-3">
           <label className="grid gap-1 flex-1">
-            <span className="text-[#F5E6C8]/50 text-xs">Buka jam</span>
+            <span className="text-[rgb(var(--text-rgb)/50%)] text-xs">Buka jam</span>
             <select
               value={form.openHour ?? DEFAULT_OPEN_HOUR}
               onChange={(e) => setForm({ ...form, openHour: Number(e.target.value) })}
-              className="bg-[#1C1512] text-[#F5E6C8] rounded-lg px-3 py-2.5 text-sm border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+              className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] rounded-lg px-3 py-2.5 text-sm border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
             >
               {Array.from({ length: 24 }, (_, h) => (
                 <option key={h} value={h}>{String(h).padStart(2, "0")}.00</option>
@@ -2417,11 +2417,11 @@ function ShopTab({ shopInfo, saveShopInfo }) {
             </select>
           </label>
           <label className="grid gap-1 flex-1">
-            <span className="text-[#F5E6C8]/50 text-xs">Tutup jam</span>
+            <span className="text-[rgb(var(--text-rgb)/50%)] text-xs">Tutup jam</span>
             <select
               value={form.closeHour ?? DEFAULT_CLOSE_HOUR}
               onChange={(e) => setForm({ ...form, closeHour: Number(e.target.value) })}
-              className="bg-[#1C1512] text-[#F5E6C8] rounded-lg px-3 py-2.5 text-sm border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+              className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] rounded-lg px-3 py-2.5 text-sm border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
             >
               {Array.from({ length: 24 }, (_, h) => (
                 <option key={h} value={h}>{String(h).padStart(2, "0")}.00</option>
@@ -2434,16 +2434,16 @@ function ShopTab({ shopInfo, saveShopInfo }) {
         )}
       </div>
 
-      <div className="border-t border-[#F5E6C8]/10 pt-3 grid gap-2">
-        <h3 className="text-[#F5E6C8] font-semibold text-sm flex items-center gap-2">
-          <Phone size={15} className="text-[#E85D2C]" /> Rekening / Nomor Pembayaran
+      <div className="border-t border-[rgb(var(--text-rgb)/10%)] pt-3 grid gap-2">
+        <h3 className="text-[rgb(var(--text-rgb))] font-semibold text-sm flex items-center gap-2">
+          <Phone size={15} className="text-[rgb(var(--accent-rgb))]" /> Rekening / Nomor Pembayaran
         </h3>
-        <p className="text-[#F5E6C8]/40 text-xs -mt-1 mb-1">
+        <p className="text-[rgb(var(--text-rgb)/40%)] text-xs -mt-1 mb-1">
           Nomor ini otomatis dikirim ke pembeli di pesan WhatsApp dan label pengiriman sesuai metode bayar yang mereka pilih.
         </p>
         {PAYMENT_METHODS.map((m) => (
           <label key={m.id} className="grid gap-1">
-            <span className="text-[#F5E6C8]/50 text-xs">{m.label}</span>
+            <span className="text-[rgb(var(--text-rgb)/50%)] text-xs">{m.label}</span>
             <input
               value={form.paymentAccounts?.[m.id] || ""}
               onChange={(e) =>
@@ -2453,7 +2453,7 @@ function ShopTab({ shopInfo, saveShopInfo }) {
                 })
               }
               placeholder={`No. ${m.label} / a.n. ...`}
-              className="bg-[#1C1512] text-[#F5E6C8] placeholder-[#F5E6C8]/30 rounded-lg px-3 py-2.5 text-sm border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+              className="bg-[rgb(var(--bg-rgb))] text-[rgb(var(--text-rgb))] placeholder-[rgb(var(--text-rgb)/30%)] rounded-lg px-3 py-2.5 text-sm border border-[rgb(var(--text-rgb)/10%)] focus:border-[rgb(var(--accent-rgb))] outline-none"
             />
           </label>
         ))}
@@ -2461,7 +2461,7 @@ function ShopTab({ shopInfo, saveShopInfo }) {
 
       <button
         onClick={handleSave}
-        className="bg-[#E85D2C] text-[#1C1512] font-semibold text-sm py-2.5 rounded-xl hover:bg-[#E85D2C]/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F5E6C8] flex items-center justify-center gap-2"
+        className="bg-[rgb(var(--accent-rgb))] text-[rgb(var(--bg-rgb))] font-semibold text-sm py-2.5 rounded-xl hover:bg-[rgb(var(--accent-rgb)/85%)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgb(var(--text-rgb))] flex items-center justify-center gap-2"
       >
         {saved ? <><Check size={14} /> Tersimpan</> : "Simpan"}
       </button>
