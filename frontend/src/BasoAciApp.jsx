@@ -2124,14 +2124,129 @@ function MenuTab({ menu, updatePrice, updateDesc, updateStock, updatePoEta, addM
 }
 
 function ReportTab({ orders }) {
-  const totalRevenue = orders.reduce((s, o) => s + o.total, 0);
-  const doneOrders = orders.filter((o) => o.status === "Selesai");
+  const [filterYear, setFilterYear] = useState("all");
+  const [filterMonth, setFilterMonth] = useState("all");
+  const [filterDay, setFilterDay] = useState("all");
+
+  const years = Array.from(
+    new Set(orders.map((o) => new Date(o.createdAt).getFullYear()))
+  ).sort((a, b) => b - a);
+
+  const monthNames = [
+    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+    "Juli", "Agustus", "September", "Oktober", "November", "Desember",
+  ];
+
+  const daysInSelectedMonth =
+    filterYear !== "all" && filterMonth !== "all"
+      ? new Date(Number(filterYear), Number(filterMonth) + 1, 0).getDate()
+      : 31;
+
+  const filteredOrders = orders.filter((o) => {
+    const d = new Date(o.createdAt);
+    if (filterYear !== "all" && d.getFullYear() !== Number(filterYear)) return false;
+    if (filterMonth !== "all" && d.getMonth() !== Number(filterMonth)) return false;
+    if (filterDay !== "all" && d.getDate() !== Number(filterDay)) return false;
+    return true;
+  });
+
+  const totalRevenue = filteredOrders.reduce((s, o) => s + o.total, 0);
+  const doneOrders = filteredOrders.filter((o) => o.status === "Selesai");
   const itemCounts = {};
-  orders.forEach((o) => o.items.forEach((i) => { itemCounts[i.name] = (itemCounts[i.name] || 0) + i.qty; }));
+  filteredOrders.forEach((o) => o.items.forEach((i) => { itemCounts[i.name] = (itemCounts[i.name] || 0) + i.qty; }));
   const topItems = Object.entries(itemCounts).sort((a, b) => b[1] - a[1]);
+
+  function periodLabel() {
+    if (filterYear === "all") return "Semua Waktu";
+    if (filterMonth === "all") return `Tahun ${filterYear}`;
+    if (filterDay === "all") return `${monthNames[Number(filterMonth)]} ${filterYear}`;
+    return `${filterDay} ${monthNames[Number(filterMonth)]} ${filterYear}`;
+  }
+
+  async function handleExportPdf() {
+    const { jsPDF } = await import("jspdf");
+    const autoTable = (await import("jspdf-autotable")).default;
+
+    const doc = new jsPDF();
+    doc.setFontSize(14);
+    doc.text(`Laporan Pesanan - ${periodLabel()}`, 14, 16);
+
+    const rows = filteredOrders.map((o) => [
+      o.id,
+      o.buyerName || "-",
+      rupiah(o.total),
+      o.status,
+      new Date(o.createdAt).toLocaleDateString("id-ID"),
+    ]);
+
+    autoTable(doc, {
+      startY: 22,
+      head: [["ID", "Nama", "Total", "Status", "Tanggal"]],
+      body: rows,
+      styles: { fontSize: 8 },
+      headStyles: { fillColor: [232, 93, 44] },
+    });
+
+    const finalY = doc.lastAutoTable.finalY + 10;
+    const selesaiCount = filteredOrders.filter((o) => o.status === "Selesai").length;
+    const dibatalkanCount = filteredOrders.filter((o) => o.status === "Dibatalkan").length;
+
+    doc.setFontSize(10);
+    doc.text(`Total Pesanan: ${filteredOrders.length}`, 14, finalY);
+    doc.text(`Selesai: ${selesaiCount}  |  Dibatalkan: ${dibatalkanCount}`, 14, finalY + 6);
+    doc.text(`Total Omzet (semua status): ${rupiah(totalRevenue)}`, 14, finalY + 12);
+
+    const fileSuffix = periodLabel().replace(/\s+/g, "-").toLowerCase();
+    doc.save(`laporan-${fileSuffix}.pdf`);
+  }
 
   return (
     <div className="grid gap-4">
+      <div className="rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-4">
+        <p className="text-[#F5E6C8] font-semibold text-sm mb-3">Filter periode</p>
+        <div className="grid grid-cols-3 gap-2">
+          <select
+            value={filterYear}
+            onChange={(e) => { setFilterYear(e.target.value); setFilterMonth("all"); setFilterDay("all"); }}
+            className="bg-[#1C1512] text-[#F5E6C8] rounded-lg px-2 py-2 text-xs border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none"
+          >
+            <option value="all">Semua Tahun</option>
+            {years.map((y) => (
+              <option key={y} value={y}>{y}</option>
+            ))}
+          </select>
+          <select
+            value={filterMonth}
+            onChange={(e) => { setFilterMonth(e.target.value); setFilterDay("all"); }}
+            disabled={filterYear === "all"}
+            className="bg-[#1C1512] text-[#F5E6C8] rounded-lg px-2 py-2 text-xs border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none disabled:opacity-30"
+          >
+            <option value="all">Semua Bulan</option>
+            {monthNames.map((m, idx) => (
+              <option key={m} value={idx}>{m}</option>
+            ))}
+          </select>
+          <select
+            value={filterDay}
+            onChange={(e) => setFilterDay(e.target.value)}
+            disabled={filterMonth === "all"}
+            className="bg-[#1C1512] text-[#F5E6C8] rounded-lg px-2 py-2 text-xs border border-[#F5E6C8]/10 focus:border-[#E85D2C] outline-none disabled:opacity-30"
+          >
+            <option value="all">Semua Hari</option>
+            {Array.from({ length: daysInSelectedMonth }, (_, i) => i + 1).map((d) => (
+              <option key={d} value={d}>{d}</option>
+            ))}
+          </select>
+        </div>
+        <button
+          onClick={handleExportPdf}
+          disabled={filteredOrders.length === 0}
+          className="mt-3 w-full flex items-center justify-center gap-2 rounded-lg bg-[#E85D2C] text-[#F5E6C8] text-xs font-semibold py-2.5 disabled:opacity-30 disabled:cursor-not-allowed transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E85D2C]"
+        >
+          <Printer size={14} /> Export PDF ({periodLabel()})
+        </button>
+      </div>
+
       <div className="grid grid-cols-2 gap-3">
         <div className="rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-4">
           <p className="text-[#F5E6C8]/50 text-[10px] uppercase tracking-wide mb-1">Total omzet</p>
@@ -2139,12 +2254,12 @@ function ReportTab({ orders }) {
         </div>
         <div className="rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-4">
           <p className="text-[#F5E6C8]/50 text-[10px] uppercase tracking-wide mb-1">Pesanan selesai</p>
-          <p className="text-[#F5E6C8] font-mono font-bold text-xl">{doneOrders.length} / {orders.length}</p>
+          <p className="text-[#F5E6C8] font-mono font-bold text-xl">{doneOrders.length} / {filteredOrders.length}</p>
         </div>
       </div>
 
       <div className="rounded-2xl bg-[#F5E6C8]/5 border border-[#F5E6C8]/10 p-4">
-        <p className="text-[#F5E6C8] font-semibold text-sm mb-3">Menu terlaris</p>
+        <p className="text-[#F5E6C8] font-semibold text-sm mb-3">Menu terlaris ({periodLabel()})</p>
         {topItems.length === 0 ? (
           <p className="text-[#F5E6C8]/40 text-xs">Belum ada data.</p>
         ) : (
